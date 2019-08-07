@@ -11,9 +11,7 @@ from flask import Flask, jsonify, request, Response
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-# Environment Constants
-
-# CLOUD_STORAGE_BUCKET = os.environ.get('CLOUD_STORAGE_BUCKET')
+# environment vars
 GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
 
 app = Flask(__name__)
@@ -28,10 +26,14 @@ firebase_admin.initialize_app(cred, {
 # get db ref
 db = firestore.client()
 
+# endpoints
+
+# home
 @app.route('/')
 def home():
     return jsonify("dali-network-19f ~ Jai Smith")
 
+# datasource
 @app.route('/api/source/<data_type>', methods = ['GET', 'POST'])
 def push(data_type):
     # # get bucket
@@ -74,6 +76,26 @@ def push(data_type):
         data = db.collection('source').document('%s' % data_type)
         
         return jsonify(data.get().to_dict()), 200
+
+# members
+@app.route('/api/members', methods = ['GET'])
+def members():
+    # get members from database
+    members = db.collection('source').document('keyed').get().to_dict()
+
+    # check to make sure members were successfully loaded
+    if members == None:
+        return Response(status = 503)
+
+    # check if specific user was requested
+    if 'member' in request.args:
+        if request.args.get('member') in members:
+            return jsonify(members[request.args.get('member')]), 200
+        else:
+            return Response(status = 404)
+
+    # return all users
+    return jsonify(members), 200
 
 
 if __name__ == '__main__':
