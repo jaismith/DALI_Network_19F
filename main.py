@@ -5,6 +5,8 @@
 import logging
 import os
 
+import json
+
 from flask import Flask, jsonify, request, Response
 
 from google.cloud import datastore
@@ -23,9 +25,6 @@ def home():
 
 @app.route('/api/source/<type>', methods = ['GET', 'POST'])
 def push(type):
-    # get datastore client
-    datastore_client = datastore.Client()
-
     # get bucket
     storage_client = storage.Client()
     bucket = storage_client.get_bucket(CLOUD_STORAGE_BUCKET)
@@ -37,26 +36,26 @@ def push(type):
         if os.path.splitext(file.filename)[1] != '.json':
             return jsonify("Invalid file, must have .json extension"), 400
 
-        # create blob
-        blob = bucket.blob('source/unkeyed.json')
-        blob.upload_from_file(file)
+        # load json
+        data = json.load(file)
 
-        # log receipt of data
-        if type == 'keyed':
-            logging.debug("Received keyed data")
-        elif type == 'unkeyed':
-            logging.debug("Received unkeyed data")
+        # create blob
+        blob = bucket.blob('source/%s.json' % type)
+        blob.upload_from_string(json.dumps(data, separators=(',', ':')))
+
+        # log
+        logging.debug("Received %s data" % type)
 
         return Response(status = 201)
 
     elif request.method == 'GET':
-        # get key
-        key = datastore_client.key(type)
+        # get blob from bucket
+        blob = bucket.get_blob('source/%s.json' % type)
 
-        # load entity
-        entity = datastore_client.get(key)
+        # download
+        data = blob.download_as_string()
 
-        return jsonify({'file': entity['file']}), 200
+        return data, 200
 
 # Setup
 
