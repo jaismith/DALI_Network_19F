@@ -1,45 +1,111 @@
 # models.py
 
 import os
-import firebase_admin
-
-from firebase_admin import credentials
-from firebase_admin import firestore
-
-# environment vars
-GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
-
-# authenticate with firestore
-cred = credentials.ApplicationDefault()
-firebase_admin.initialize_app(cred, {
-  'projectId': GOOGLE_CLOUD_PROJECT,
-})
-
-# get db ref
-db = firestore.client()
 
 # models
 class Member:
-  def __init__(self, name, year, picture, role, properties):
+  def __init__(self, name, properties):
     self.name = name
-    self.year = year
-    self.picture = picture
-    self.role = role
     self.properties = properties
 
   @staticmethod
   def from_dict(source):
     # get copy of source
-    source = source.copy()
+    properties = source.copy()
 
     # convert to person object
-    member = Member(source.pop('name'), source.pop('year'), source.pop('picture'), source.pop('role'), source)
+    member = Member(properties.pop('name'), properties)
 
     return member
 
+  def to_dict(self, abbreviated = False):
+    if not abbreviated:
+      dictionary = self.properties
+    else:
+      important = ['name', 'year', 'picture', 'role']
+      dictionary = { key: value for key, value in self.properties.items() if key in important }
+
+    return dictionary
+
+class Network():
+  def __init__(self, members, groups = None, group_index = None, membership_index = None):
+    # all members
+    self.members = members
+
+    if not all (value is None for value in [groups, group_index, membership_index]):
+      self.groups = groups
+      self.group_index = group_index
+      self.membership_index = membership_index
+
+      return
+
+    # groups of members (i.e. ("role", "Designer"): ["Justin Luo", ...]), and
+    # an index of the groups (i.e. "role": ["Designer", ...])
+    self.groups = dict()
+    self.group_index = dict()
+
+    # groups members are a part of (i.e. "Justin Luo": [("role", "Designer"), ...])
+    self.membership_index = dict()
+    
+    # populate groups and index
+    for member in members.values():
+      for key, value in member.properties.items():
+        # create property
+        property = '(%s, %s)' % (key, value)
+
+        # add individual to group corresponding to property (key, value)
+        if property not in self.groups:
+          self.groups[property] = [member.name]
+          
+          # update index
+          if key not in self.group_index:
+            self.group_index[key] = [value]
+          else:
+            self.group_index[key].append(value)
+        else:
+          self.groups[property].append(member.name)
+
+        # add group to membershipIndex
+        if member.name not in self.membership_index:
+          self.membership_index[member.name] = [property]
+        else:
+          self.membership_index[member.name].append(property)
+
+  @staticmethod
+  def from_dict(source):
+    return Network(members = {data['name']: Member.from_dict(data) for data in source['members'].values()},
+      groups = source['groups'],
+      group_index = source['group_index'],
+      membership_index = source['membership_index'])
+    
   def to_dict(self):
-    dict = self.properties
-    dict['name'] = self.name
-    dict['year'] = self.year
-    dict['role'] = self.role
-    dict['picture'] = self.picture
+    dictionary = dict()
+
+    dictionary['members'] = {member.name: member.to_dict() for member in self.members.values()}
+    dictionary['groups'] = self.groups
+    dictionary['group_index'] = self.group_index
+    dictionary['membership_index'] = self.membership_index
+
+    return dictionary
+
+  # get all groups, option to filter by key (i.e. "role")
+  def get_groups(self, key = None):
+    if key is not None:
+      if key in self.group_index.keys():
+        return self.group_index[key]
+
+    return self.group_index.keys()
+
+  # get members in a group
+  def get_members_of(self, group):
+    if group in self.groups.keys():
+      return [self.members[member] for member in self.groups[group]]
+
+    return []
+
+  # get groups a member is part of
+  def get_member_groups(self, member_name):
+    if member_name in self.membership_index.keys():
+      return self.membership_index[member_name]
+
+    return []

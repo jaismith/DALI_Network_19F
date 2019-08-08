@@ -11,6 +11,10 @@ from flask import Flask, jsonify, request, Response
 from firebase_admin import credentials
 from firebase_admin import firestore
 
+from models import Member, Network
+from helpers import generate_network
+
+
 # environment vars
 GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
 
@@ -57,7 +61,7 @@ def push(data_type):
         # if unkeyed, convert data to dict (enumerate)
         data = dict()
         for index, value in enumerate(json_list):
-            if 'name' in data:
+            if data_type == 'keyed':
                 data[value['name']] = value
             else:
                 data[str(index)] = value
@@ -67,9 +71,17 @@ def push(data_type):
         doc.set(data)
         
         # log
-        logging.debug("Received %s data" % data_type)
+        logging.debug("Received %s data, generating Network" % data_type)
 
-        return Response(status = 201)
+        # if keyed, generate network
+        if data_type == 'keyed':
+            network = generate_network(data)
+
+            # write network to firestore
+            doc = db.collection('data').document('network')
+            doc.set(network.to_dict())
+
+            return Response(status = 201)
 
     elif request.method == 'GET':
         #get blob from bucket
@@ -79,7 +91,8 @@ def push(data_type):
 
 # members
 @app.route('/api/members', methods = ['GET'])
-def members():
+@app.route('/api/members/<member>', methods = ['GET'])
+def members(member = None):
     # get members from database
     members = db.collection('source').document('keyed').get().to_dict()
 
@@ -88,15 +101,43 @@ def members():
         return Response(status = 503)
 
     # check if specific user was requested
-    if 'member' in request.args:
-        if request.args.get('member') in members:
-            return jsonify(members[request.args.get('member')]), 200
+    if member is not None:
+        if member in members:
+            return jsonify(members[member]), 200
         else:
             return Response(status = 404)
+
+    # abbreviate member info (less info)
+    for key, value in members.items():
+        members[key] = Member.from_dict(value).to_dict(abbreviated = True)
 
     # return all users
     return jsonify(members), 200
 
+# members with tags
+@app.route('/api/members/filter', methods = ['GET'])
+def members_filter():
+    # return error if no tag was provided
+    if not all (arg in request.args for arg in ('field', 'value')):
+        return jsonify('Incorrect parameters received: %s, need \'field\' and \'value\'' % request.args), 400
+
+    # get tag
+    field = request.args['field']
+    value = request.args['value']
+
+    # get network from firestore
+    network = Network.from_dict(db.collection('data').document('network').get().to_dict())
+
+    # get members matching tag
+    members = network.get_members_of('(%s, %s)' % (field, value))
+
+    # convert members to response compatible format
+    members_dict = dict()
+    for member in members:
+        member_dict = member.to_dict(abbreviated = True)
+        members_dict[member.name] = member_dict
+
+    return jsonify(members_dict), 200
 
 if __name__ == '__main__':
 	app.run(host = '127.0.0.1', port = 8080, debug = True)
