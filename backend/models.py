@@ -22,8 +22,11 @@ class Member:
     if not abbreviated:
       dictionary = self.properties
     else:
-      important = ['name', 'year', 'picture', 'role']
+      important = ['year', 'picture', 'role']
       dictionary = { key: value for key, value in self.properties.items() if key in important }
+    
+    # add name to response
+    dictionary['name'] = self.name
 
     return dictionary
 

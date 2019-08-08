@@ -109,11 +109,12 @@ def members(member = None):
             return Response(status = 404)
 
     # abbreviate member info (less info)
-    for key, value in members.items():
-        members[key] = Member.from_dict(value).to_dict(abbreviated = True)
+    member_dict = []
+    for member in members.values():
+        member_dict.append(Member.from_dict(member).to_dict(abbreviated = True))
 
     # return all users
-    return jsonify(members), 200
+    return jsonify(member_dict), 200
 
 # members with tags
 @app.route('/api/members/filter', methods = ['GET'])
@@ -133,12 +134,13 @@ def members_filter():
     members = network.get_members_of('(%s, %s)' % (field, value))
 
     # convert members to response compatible format
-    members_dict = dict()
+    # members_dict = dict()
     for member in members:
-        member_dict = member.to_dict(abbreviated = True)
-        members_dict[member.name] = member_dict
-
-    return jsonify(members_dict), 200
+        member = member.to_dict(abbreviated = True)
+        # member_dict = member.to_dict(abbreviated = True)
+        # members_dict[member.name] = member_dict
+    
+    return jsonify(members), 200
 
 if __name__ == '__main__':
 	app.run(host = '127.0.0.1', port = 8080, debug = True)
