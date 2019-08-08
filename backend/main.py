@@ -6,14 +6,15 @@ import logging
 import os
 import json
 import firebase_admin
+import grip
 
-from flask import Flask, jsonify, request, Response
+from flask import Flask, jsonify, request, Response, redirect
 from firebase_admin import credentials
 from firebase_admin import firestore
+from grip import render_page
 
 from models import Member, Network
 from helpers import generate_network
-
 
 # environment vars
 GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
@@ -33,9 +34,9 @@ db = firestore.client()
 # endpoints
 
 # home
-@app.route('/')
+@app.route('/api')
 def home():
-    return jsonify("dali-network-19f ~ Jai Smith")
+    return render_page(render_inline = True), 200
 
 # datasource
 @app.route('/api/source/<data_type>', methods = ['GET', 'POST'])
