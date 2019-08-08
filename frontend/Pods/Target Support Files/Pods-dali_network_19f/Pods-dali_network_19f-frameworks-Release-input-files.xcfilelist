@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-dali_network_19f/Pods-dali_network_19f-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Hero/Hero.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework

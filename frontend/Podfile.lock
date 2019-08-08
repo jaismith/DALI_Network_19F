@@ -1,0 +1,37 @@
+PODS:
+  - Alamofire (5.0.0-beta.6)
+  - Hero (1.4.0)
+  - Kingfisher (5.6.0)
+  - SwiftLint (0.33.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-beta.5)
+  - Hero (from `https://github.com/HeroTransitions/Hero`, commit `07ef8832ad72a60e44ea0aa4cf46c8f46c3f3539`)
+  - Kingfisher (~> 5.0)
+  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Kingfisher
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  Hero:
+    :commit: 07ef8832ad72a60e44ea0aa4cf46c8f46c3f3539
+    :git: https://github.com/HeroTransitions/Hero
+
+CHECKOUT OPTIONS:
+  Hero:
+    :commit: 07ef8832ad72a60e44ea0aa4cf46c8f46c3f3539
+    :git: https://github.com/HeroTransitions/Hero
+
+SPEC CHECKSUMS:
+  Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
+  Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
+  SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
+
+PODFILE CHECKSUM: fdb9b0c3d6dd1cc01756dcb55023fa4b787abbe1
+
+COCOAPODS: 1.7.1

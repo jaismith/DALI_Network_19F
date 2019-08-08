@@ -1,0 +1,14 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '11.0'
+
+target 'dali_network_19f' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for dali_network_19f
+  pod 'Hero', :git => 'https://github.com/HeroTransitions/Hero', :commit => '07ef8832ad72a60e44ea0aa4cf46c8f46c3f3539'
+  pod 'Alamofire', '~> 5.0.0-beta.5'
+  pod 'SwiftLint'
+  pod 'Kingfisher', '~> 5.0'
+
+end
