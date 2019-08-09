@@ -7,75 +7,81 @@
 //
 
 import UIKit
+import Alamofire
+import os.log
 
 class MemberTableViewController: UITableViewController {
+
+    // MARK: Properties
+
+    var members: [Member]?
+
+    // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        // register cells
+        tableView.register(UINib(nibName: "MemberTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "MemberCell")
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // add refresh control
+//        self.tableView.refreshControl = UIRefreshControl()
+
+        // fix tableview
+//        self.tableView.contentInsetAdjustmentBehavior = .never
+
+        // add space at bottom of tableview if frameless display
+        if UIDevice.current.hasNotch {
+            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 20))
+        }
+
+        // fetch members
+        fetchMembers()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // remove 'back' text
+        
+
+        // set title fonts
+        if let montserrat = UIFont(name: "Montserrat", size: 30), let montserratBold = montserrat.fontDescriptor.withSymbolicTraits(.traitBold) {
+            // regular
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 109 / 255, blue: 166 / 255, alpha: 1),
+                                                                       NSAttributedString.Key.font:  UIFont(descriptor: montserratBold, size: 20)]
+
+            // large
+            navigationController?.navigationBar.largeTitleTextAttributes =
+                [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 109 / 255, blue: 166 / 255, alpha: 1),
+                 NSAttributedString.Key.font: UIFont(descriptor: montserratBold, size: 30)]
+        }
+
+        // customize navigationbar
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.backgroundColor = self.tableView.backgroundColor
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return members?.count ?? 0
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath) as? MemberTableViewCell else {
+            fatalError("Dequeued cell not an instance of MemberTableViewCell")
+        }
 
         // Configure the cell...
+        cell.load(from: members![indexPath.row])
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
@@ -87,4 +93,33 @@ class MemberTableViewController: UITableViewController {
     }
     */
 
+    // MARK: Private Methods
+
+    private func fetchMembers() {
+//        self.tableView.refreshControl?.beginRefreshing()
+
+        AF.request(URL(string: "http://dali-network-19f.appspot.com/api/members")!, method: .get)
+            .validate(statusCode: [200])
+            .validate(contentType: ["application/json"])
+            .responseJSON { response in
+                defer {
+//                    self.tableView.refreshControl?.endRefreshing()
+                }
+
+                switch response.result {
+                case .success:
+                    guard let data = response.data, let members = try? JSONDecoder().decode([Member].self, from: data) else {
+                        os_log("Error fetching members: deserialization failed", log: OSLog.default, type: .error)
+                        return
+                    }
+
+                    self.members = members.sorted(by: {memberA, memberB in return memberA.name < memberB.name})
+
+                    self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .bottom)
+
+                case .failure(let error):
+                    os_log("Error fetching members: %@", log: OSLog.default, type: .error, error.localizedDescription)
+                }
+        }
+    }
 }

@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C300FAF22FC9FAA006281C8 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C67245322FC94F6004B50F7 /* Montserrat-SemiBold.ttf */; };
+		0C300FB022FC9FAA006281C8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C67245422FC96AE004B50F7 /* Montserrat-Bold.ttf */; };
+		0C300FB322FD2A03006281C8 /* UIDevice+hasNotch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FB222FD2A03006281C8 /* UIDevice+hasNotch.swift */; };
 		0C8CBA5622FC4F1300F12DC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5522FC4F1300F12DC7 /* AppDelegate.swift */; };
 		0C8CBA5822FC4F1300F12DC7 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5722FC4F1300F12DC7 /* LandingViewController.swift */; };
 		0C8CBA5B22FC4F1300F12DC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5922FC4F1300F12DC7 /* Main.storyboard */; };
 		0C8CBA5D22FC4F1400F12DC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5C22FC4F1400F12DC7 /* Assets.xcassets */; };
 		0C8CBA6022FC4F1400F12DC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5E22FC4F1400F12DC7 /* LaunchScreen.storyboard */; };
-		0C8CBA7322FC743600F12DC7 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA7122FC743600F12DC7 /* MemberCollectionViewCell.swift */; };
-		0C8CBA7422FC743600F12DC7 /* MemberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CBA7222FC743600F12DC7 /* MemberCollectionViewCell.xib */; };
 		0C8CBA7622FC754A00F12DC7 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA7522FC754A00F12DC7 /* ProfileImageView.swift */; };
 		0C8CBA7A22FC762600F12DC7 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CBA7922FC762600F12DC7 /* Montserrat-Medium.ttf */; };
 		0C8CBA7C22FC784B00F12DC7 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA7B22FC784B00F12DC7 /* Member.swift */; };
 		0C8CBA7E22FC7E9400F12DC7 /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA7D22FC7E9400F12DC7 /* RuntimeError.swift */; };
-		0C8CBA8022FC822700F12DC7 /* MemberCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA7F22FC822700F12DC7 /* MemberCollectionViewController.swift */; };
+		0C8CBA8722FC8FE200F12DC7 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA8522FC8FE200F12DC7 /* MemberTableViewCell.swift */; };
+		0C8CBA8822FC8FE200F12DC7 /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CBA8622FC8FE200F12DC7 /* MemberTableViewCell.xib */; };
+		0C8CBA8A22FC910000F12DC7 /* MemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA8922FC910000F12DC7 /* MemberTableViewController.swift */; };
 		ADB661FD9718C53B99E57259 /* Pods_dali_network_19f.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663DE9E4001D29C2D72D73BB /* Pods_dali_network_19f.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0928B311E2D8DAB6AB84E813 /* Pods-dali_network_19f.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dali_network_19f.debug.xcconfig"; path = "Target Support Files/Pods-dali_network_19f/Pods-dali_network_19f.debug.xcconfig"; sourceTree = "<group>"; };
+		0C300FB222FD2A03006281C8 /* UIDevice+hasNotch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+hasNotch.swift"; sourceTree = "<group>"; };
+		0C67245322FC94F6004B50F7 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		0C67245422FC96AE004B50F7 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		0C8CBA5222FC4F1300F12DC7 /* dali_network_19f.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dali_network_19f.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C8CBA5522FC4F1300F12DC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C8CBA5722FC4F1300F12DC7 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -31,13 +37,13 @@
 		0C8CBA5C22FC4F1400F12DC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C8CBA5F22FC4F1400F12DC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C8CBA6122FC4F1400F12DC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0C8CBA7122FC743600F12DC7 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
-		0C8CBA7222FC743600F12DC7 /* MemberCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberCollectionViewCell.xib; sourceTree = "<group>"; };
 		0C8CBA7522FC754A00F12DC7 /* ProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		0C8CBA7922FC762600F12DC7 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		0C8CBA7B22FC784B00F12DC7 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		0C8CBA7D22FC7E9400F12DC7 /* RuntimeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
-		0C8CBA7F22FC822700F12DC7 /* MemberCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewController.swift; sourceTree = "<group>"; };
+		0C8CBA8522FC8FE200F12DC7 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
+		0C8CBA8622FC8FE200F12DC7 /* MemberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberTableViewCell.xib; sourceTree = "<group>"; };
+		0C8CBA8922FC910000F12DC7 /* MemberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewController.swift; sourceTree = "<group>"; };
 		4B485A90948B521403567FE2 /* Pods-dali_network_19f.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dali_network_19f.release.xcconfig"; path = "Target Support Files/Pods-dali_network_19f/Pods-dali_network_19f.release.xcconfig"; sourceTree = "<group>"; };
 		663DE9E4001D29C2D72D73BB /* Pods_dali_network_19f.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dali_network_19f.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -54,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C300FB122FD29F8006281C8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0C300FB222FD2A03006281C8 /* UIDevice+hasNotch.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0C8CBA4922FC4F1300F12DC7 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +89,7 @@
 		0C8CBA5422FC4F1300F12DC7 /* dali_network_19f */ = {
 			isa = PBXGroup;
 			children = (
+				0C300FB122FD29F8006281C8 /* Extensions */,
 				0C8CBA6722FC4F1E00F12DC7 /* Models */,
 				0C8CBA6822FC4F2300F12DC7 /* Views */,
 				0C8CBA6922FC4F2700F12DC7 /* Controllers */,
@@ -97,9 +112,9 @@
 			children = (
 				0C8CBA5E22FC4F1400F12DC7 /* LaunchScreen.storyboard */,
 				0C8CBA5922FC4F1300F12DC7 /* Main.storyboard */,
-				0C8CBA7122FC743600F12DC7 /* MemberCollectionViewCell.swift */,
-				0C8CBA7222FC743600F12DC7 /* MemberCollectionViewCell.xib */,
 				0C8CBA7522FC754A00F12DC7 /* ProfileImageView.swift */,
+				0C8CBA8522FC8FE200F12DC7 /* MemberTableViewCell.swift */,
+				0C8CBA8622FC8FE200F12DC7 /* MemberTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,7 +124,7 @@
 			children = (
 				0C8CBA5522FC4F1300F12DC7 /* AppDelegate.swift */,
 				0C8CBA5722FC4F1300F12DC7 /* LandingViewController.swift */,
-				0C8CBA7F22FC822700F12DC7 /* MemberCollectionViewController.swift */,
+				0C8CBA8922FC910000F12DC7 /* MemberTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -128,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				0C8CBA7922FC762600F12DC7 /* Montserrat-Medium.ttf */,
+				0C67245322FC94F6004B50F7 /* Montserrat-SemiBold.ttf */,
+				0C67245422FC96AE004B50F7 /* Montserrat-Bold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -209,11 +226,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C8CBA7422FC743600F12DC7 /* MemberCollectionViewCell.xib in Resources */,
+				0C300FAF22FC9FAA006281C8 /* Montserrat-SemiBold.ttf in Resources */,
+				0C300FB022FC9FAA006281C8 /* Montserrat-Bold.ttf in Resources */,
 				0C8CBA7A22FC762600F12DC7 /* Montserrat-Medium.ttf in Resources */,
 				0C8CBA6022FC4F1400F12DC7 /* LaunchScreen.storyboard in Resources */,
 				0C8CBA5D22FC4F1400F12DC7 /* Assets.xcassets in Resources */,
 				0C8CBA5B22FC4F1300F12DC7 /* Main.storyboard in Resources */,
+				0C8CBA8822FC8FE200F12DC7 /* MemberTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,11 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C8CBA8022FC822700F12DC7 /* MemberCollectionViewController.swift in Sources */,
 				0C8CBA7622FC754A00F12DC7 /* ProfileImageView.swift in Sources */,
-				0C8CBA7322FC743600F12DC7 /* MemberCollectionViewCell.swift in Sources */,
+				0C8CBA8722FC8FE200F12DC7 /* MemberTableViewCell.swift in Sources */,
 				0C8CBA5822FC4F1300F12DC7 /* LandingViewController.swift in Sources */,
+				0C8CBA8A22FC910000F12DC7 /* MemberTableViewController.swift in Sources */,
 				0C8CBA7E22FC7E9400F12DC7 /* RuntimeError.swift in Sources */,
+				0C300FB322FD2A03006281C8 /* UIDevice+hasNotch.swift in Sources */,
 				0C8CBA5622FC4F1300F12DC7 /* AppDelegate.swift in Sources */,
 				0C8CBA7C22FC784B00F12DC7 /* Member.swift in Sources */,
 			);

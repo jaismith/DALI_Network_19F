@@ -19,6 +19,10 @@ class Member: Decodable {
 
     var other: [String: String]?
 
+    var displayName: String {
+        return name.replacingOccurrences(of: "[ ].+[ ]", with: " ", options: .regularExpression)
+    }
+
     // MARK: Decodable
 
     enum CodingKeys: String, CodingKey {

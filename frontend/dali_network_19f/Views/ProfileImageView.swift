@@ -26,9 +26,6 @@ import os.log
             }
         })
 
-        self.layer.borderColor = UIColor.white.cgColor
-        self.layer.borderWidth = 2
-
         // make round
         self.contentMode = .scaleAspectFill
         self.layer.cornerRadius = floor(self.frame.height / 2)
