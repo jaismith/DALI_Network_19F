@@ -16,15 +16,18 @@ import os.log
 
     func configure(for member: Member) {
         self.kf.indicatorType = .activity
-        self.kf.setImage(with: member.picture, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: { result in
-            switch result {
-            case .failure:
-                os_log("Error loading profile image for member %@", log: OSLog.default, type: .error, member.name)
 
-            default:
-                break
-            }
-        })
+        DispatchQueue.main.async {
+            self.kf.setImage(with: member.picture, placeholder: UIImage(named: "person.crop.circle"), options: nil, progressBlock: nil, completionHandler: { result in
+                switch result {
+                case .failure:
+                    os_log("Error loading profile image for member %@", log: OSLog.default, type: .error, member.name)
+
+                default:
+                    break
+                }
+            })
+        }
 
         // make round
         self.contentMode = .scaleAspectFill

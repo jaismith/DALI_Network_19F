@@ -29,8 +29,7 @@ class MemberTableViewCell: UITableViewCell {
         profileImageContainer.layer.shadowColor = UIColor.black.cgColor
         profileImageContainer.layer.shadowOffset = CGSize(width: 1, height: 2)
         profileImageContainer.layer.shadowOpacity = 0.2
-        profileImageContainer.layer.shadowRadius = 3.0
-    }
+        profileImageContainer.layer.shadowRadius = 3.0    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -6,7 +6,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.5)
-  - Hero (from `https://github.com/HeroTransitions/Hero`, commit `07ef8832ad72a60e44ea0aa4cf46c8f46c3f3539`)
+  - Hero (from `https://github.com/adamcumiskey/Hero`, commit `d76949135880e2dbc08f57a7ea987b297192c380`)
   - Kingfisher (~> 5.0)
   - SwiftLint
 
@@ -18,13 +18,13 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Hero:
-    :commit: 07ef8832ad72a60e44ea0aa4cf46c8f46c3f3539
-    :git: https://github.com/HeroTransitions/Hero
+    :commit: d76949135880e2dbc08f57a7ea987b297192c380
+    :git: https://github.com/adamcumiskey/Hero
 
 CHECKOUT OPTIONS:
   Hero:
-    :commit: 07ef8832ad72a60e44ea0aa4cf46c8f46c3f3539
-    :git: https://github.com/HeroTransitions/Hero
+    :commit: d76949135880e2dbc08f57a7ea987b297192c380
+    :git: https://github.com/adamcumiskey/Hero
 
 SPEC CHECKSUMS:
   Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
@@ -32,6 +32,6 @@ SPEC CHECKSUMS:
   Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
   SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
 
-PODFILE CHECKSUM: fdb9b0c3d6dd1cc01756dcb55023fa4b787abbe1
+PODFILE CHECKSUM: 7ade43781b9e3dedf4cf3ecac602d228124fe902
 
 COCOAPODS: 1.7.1

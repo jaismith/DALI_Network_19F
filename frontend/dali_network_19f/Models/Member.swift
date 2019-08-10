@@ -65,11 +65,4 @@ class Member: Decodable {
         self.picture = picture!
         self.role = role!
     }
-
-    init(name: String, year: String, picture: URL, role: String) {
-        self.name = name
-        self.year = year
-        self.picture = picture
-        self.role = role
-    }
 }

@@ -7,14 +7,23 @@
 //
 
 import UIKit
-import Alamofire
 import os.log
+import Hero
 
-class MemberTableViewController: UITableViewController {
+class MemberTableViewController: UITableViewController, UIGestureRecognizerDelegate {
 
     // MARK: Properties
 
     var members: [Member]?
+
+    // drag to exit
+    var panGestureRecognizer: UIPanGestureRecognizer!
+    var progressBool: Bool = false
+    var dismissBool: Bool = false
+
+    // tableview ready to load?
+    var tableViewLoaded: Bool = false
+    var viewAppeared: Bool = false
 
     // MARK: Overrides
 
@@ -24,42 +33,53 @@ class MemberTableViewController: UITableViewController {
         // register cells
         tableView.register(UINib(nibName: "MemberTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "MemberCell")
 
-        // add refresh control
-//        self.tableView.refreshControl = UIRefreshControl()
-
-        // fix tableview
-//        self.tableView.contentInsetAdjustmentBehavior = .never
-
-        // add space at bottom of tableview if frameless display
-        if UIDevice.current.hasNotch {
-            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 20))
-        }
+        // configure hero
+        view.hero.isEnabled = true
+        view.hero.isEnabledForSubviews = false
+        view.hero.id = "members"
+        view.hero.modifiers = [.arc(), .useLayerRenderSnapshot]
 
         // fetch members
-        fetchMembers()
+        API.shared.getMembers { members in
+            self.members = members
+            DispatchQueue.main.async {
+                if !self.viewAppeared {
+                    self.tableViewLoaded = true
+                } else {
+                    self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+                }
+            }
+        }
+
+        // setup drag to exit
+        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(exit))
+        panGestureRecognizer.delegate = self
+        view.addGestureRecognizer(panGestureRecognizer)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        // remove 'back' text
-        
-
-        // set title fonts
-        if let montserrat = UIFont(name: "Montserrat", size: 30), let montserratBold = montserrat.fontDescriptor.withSymbolicTraits(.traitBold) {
-            // regular
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 109 / 255, blue: 166 / 255, alpha: 1),
-                                                                       NSAttributedString.Key.font:  UIFont(descriptor: montserratBold, size: 20)]
-
-            // large
-            navigationController?.navigationBar.largeTitleTextAttributes =
-                [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 109 / 255, blue: 166 / 255, alpha: 1),
-                 NSAttributedString.Key.font: UIFont(descriptor: montserratBold, size: 30)]
-        }
-
         // customize navigationbar
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.backgroundColor = self.tableView.backgroundColor
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if tableViewLoaded {
+            self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+        } else {
+            viewAppeared = true
+        }
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
     }
 
     // MARK: - Table view data source
@@ -83,6 +103,57 @@ class MemberTableViewController: UITableViewController {
         return cell
     }
 
+    // MARK: Private Methods
+
+    @objc private func exit(recognizer: UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: nil)
+        let progressY = (translation.y / 2) / view.bounds.height
+
+        if recognizer.direction == .down && tableView.isAtTop {
+            if dismissBool {
+                dismissBool = false
+                hero.dismissViewController()
+                self.hero.modalAnimationType = .uncover(direction: .down)
+                progressBool = true
+                recognizer.setTranslation(.zero, in: view)
+            }
+        }
+
+        switch recognizer.state {
+        case .changed:
+            if progressBool {
+                let currentPos = CGPoint(x: view.center.x, y: translation.y + view.center.y)
+                Hero.shared.update(progressY)
+                Hero.shared.apply(modifiers: [.position(currentPos)], to: view)
+            }
+
+        default:
+            dismissBool = true
+            progressBool = false
+
+            if abs(progressY + recognizer.velocity(in: nil).y / view.bounds.height) > 0.5 {
+                Hero.shared.finish()
+            } else {
+                Hero.shared.cancel()
+            }
+        }
+    }
+
+    // MARK: UIGestureRecognizerDelegate
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+
+    // MARK: UIScrollViewDelegate
+
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.isAtTop && scrollView.panGestureRecognizer.direction == .down {
+            scrollView.contentOffset = CGPoint(x: 0, y: -(UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0) + (self.navigationController?.navigationBar.frame.height ?? 0)
+            )
+        }
+    }
+
     /*
     // MARK: - Navigation
 
@@ -92,34 +163,4 @@ class MemberTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    // MARK: Private Methods
-
-    private func fetchMembers() {
-//        self.tableView.refreshControl?.beginRefreshing()
-
-        AF.request(URL(string: "http://dali-network-19f.appspot.com/api/members")!, method: .get)
-            .validate(statusCode: [200])
-            .validate(contentType: ["application/json"])
-            .responseJSON { response in
-                defer {
-//                    self.tableView.refreshControl?.endRefreshing()
-                }
-
-                switch response.result {
-                case .success:
-                    guard let data = response.data, let members = try? JSONDecoder().decode([Member].self, from: data) else {
-                        os_log("Error fetching members: deserialization failed", log: OSLog.default, type: .error)
-                        return
-                    }
-
-                    self.members = members.sorted(by: {memberA, memberB in return memberA.name < memberB.name})
-
-                    self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .bottom)
-
-                case .failure(let error):
-                    os_log("Error fetching members: %@", log: OSLog.default, type: .error, error.localizedDescription)
-                }
-        }
-    }
 }

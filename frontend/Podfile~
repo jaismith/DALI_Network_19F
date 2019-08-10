@@ -6,7 +6,7 @@ target 'dali_network_19f' do
   use_frameworks!
 
   # Pods for dali_network_19f
-  pod 'Hero', :git => 'https://github.com/adamcumiskey/Hero', :commit => 'd76949135880e2dbc08f57a7ea987b297192c380'
+  pod 'Hero', :git => 'https://github.com/HeroTransitions/Hero', :commit => 'd76949135880e2dbc08f57a7ea987b297192c380'
   pod 'Alamofire', '~> 5.0.0-beta.5'
   pod 'SwiftLint'
   pod 'Kingfisher', '~> 5.0'
