@@ -23,7 +23,8 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
 
     // tableview ready to load?
     var tableViewLoaded: Bool = false
-    var viewAppeared: Bool = false
+    var viewDidAppear: Bool = false
+    var viewDidLayout: Bool = false
 
     // MARK: Overrides
 
@@ -37,16 +38,20 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
         view.hero.isEnabled = true
         view.hero.isEnabledForSubviews = false
         view.hero.id = "members"
-        view.hero.modifiers = [.arc(), .useLayerRenderSnapshot]
+        view.hero.modifiers = [.arc(), .shadowColor(UIColor(red: 0 / 255, green: 84 / 255, blue: 180 / 255, alpha: 1))]
 
         // fetch members
         API.shared.getMembers { members in
             self.members = members
             DispatchQueue.main.async {
-                if !self.viewAppeared {
-                    self.tableViewLoaded = true
-                } else {
+//                if !self.viewAppeared {
+//                    self.tableViewLoaded = true
+//                } else {
+//                    self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+//                }
+                if self.viewDidLayout && !self.tableViewLoaded {
                     self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+                    self.tableViewLoaded = true
                 }
             }
         }
@@ -65,13 +70,22 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if tableViewLoaded {
-            self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
-        } else {
-            viewAppeared = true
-        }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        if tableViewLoaded {
+//            self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+//        } else {
+//            viewAppeared = true
+//        }
+//    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        viewDidLayout = true
+
+        guard isViewLoaded, view.window != nil, !tableViewLoaded else { return }
+        tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+        tableViewLoaded = true
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -122,7 +136,7 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
         switch recognizer.state {
         case .changed:
             if progressBool {
-                let currentPos = CGPoint(x: view.center.x, y: translation.y + view.center.y)
+                let currentPos = CGPoint(x: view.center.x, y: max(translation.y + view.center.y, view.center.y))
                 Hero.shared.update(progressY)
                 Hero.shared.apply(modifiers: [.position(currentPos)], to: view)
             }
