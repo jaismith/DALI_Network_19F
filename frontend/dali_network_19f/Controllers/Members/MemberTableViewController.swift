@@ -44,14 +44,10 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
         API.shared.getMembers { members in
             self.members = members
             DispatchQueue.main.async {
-//                if !self.viewAppeared {
-//                    self.tableViewLoaded = true
-//                } else {
-//                    self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
-//                }
-                if self.viewDidLayout && !self.tableViewLoaded {
-                    self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+                if !self.viewDidAppear {
                     self.tableViewLoaded = true
+                } else {
+                    self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
                 }
             }
         }
@@ -70,14 +66,14 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        if tableViewLoaded {
-//            self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
-//        } else {
-//            viewAppeared = true
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if tableViewLoaded {
+            self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+        } else {
+            viewDidAppear = true
+        }
+    }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -115,6 +111,11 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
         cell.load(from: members![indexPath.row])
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let member = members![indexPath.row]
+        performSegue(withIdentifier: "MemberDetail", sender: member)
     }
 
     // MARK: Private Methods
@@ -159,22 +160,17 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
         return true
     }
 
-    // MARK: UIScrollViewDelegate
-
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.isAtTop && scrollView.panGestureRecognizer.direction == .down {
-            scrollView.contentOffset = CGPoint(x: 0, y: -(UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0) + (self.navigationController?.navigationBar.frame.height ?? 0)
-            )
-        }
-    }
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        switch segue.identifier {
+        case "MemberDetail":
+            if let destination = segue.destination as? MemberDetailTableViewController, let member = sender as? Member {
+                destination.member = member
+            }
+
+        default:
+            fatalError()
+        }
     }
-    */
 }

@@ -2,3 +2,4 @@
 appengine-generated/
 flask/
 __pycache__/
+*.vscode/

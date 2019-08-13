@@ -13,6 +13,11 @@
 		0C300FC722FDCDB5006281C8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FC622FDCDB5006281C8 /* API.swift */; };
 		0C300FC922FF136A006281C8 /* UIScrollView+positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FC822FF1369006281C8 /* UIScrollView+positions.swift */; };
 		0C300FCB22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FCA22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift */; };
+		0C515CA02301912D001F93C3 /* CustomSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C515C9F2301912D001F93C3 /* CustomSnapshotView.swift */; };
+		0C515CA223019960001F93C3 /* CircularLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C515CA123019960001F93C3 /* CircularLabel.swift */; };
+		0C6548E723019E8500F6A011 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6548E523019E8500F6A011 /* HeaderTableViewCell.swift */; };
+		0C6548E823019E8500F6A011 /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6548E623019E8500F6A011 /* HeaderTableViewCell.xib */; };
+		0C6548EA23019F4100F6A011 /* MemberDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6548E923019F4100F6A011 /* MemberDetailTableViewController.swift */; };
 		0C8CBA5622FC4F1300F12DC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5522FC4F1300F12DC7 /* AppDelegate.swift */; };
 		0C8CBA5822FC4F1300F12DC7 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5722FC4F1300F12DC7 /* LandingViewController.swift */; };
 		0C8CBA5B22FC4F1300F12DC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5922FC4F1300F12DC7 /* Main.storyboard */; };
@@ -34,6 +39,11 @@
 		0C300FC622FDCDB5006281C8 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		0C300FC822FF1369006281C8 /* UIScrollView+positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+positions.swift"; sourceTree = "<group>"; };
 		0C300FCA22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+direction.swift"; sourceTree = "<group>"; };
+		0C515C9F2301912D001F93C3 /* CustomSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSnapshotView.swift; sourceTree = "<group>"; };
+		0C515CA123019960001F93C3 /* CircularLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLabel.swift; sourceTree = "<group>"; };
+		0C6548E523019E8500F6A011 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		0C6548E623019E8500F6A011 /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
+		0C6548E923019F4100F6A011 /* MemberDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailTableViewController.swift; sourceTree = "<group>"; };
 		0C67245322FC94F6004B50F7 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		0C67245422FC96AE004B50F7 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		0C8CBA5222FC4F1300F12DC7 /* dali_network_19f.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dali_network_19f.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +84,25 @@
 				0C300FCA22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0C6548E323019E4F00F6A011 /* Members */ = {
+			isa = PBXGroup;
+			children = (
+				0C6548E423019E6100F6A011 /* Views */,
+				0C8CBA8922FC910000F12DC7 /* MemberTableViewController.swift */,
+				0C6548E923019F4100F6A011 /* MemberDetailTableViewController.swift */,
+			);
+			path = Members;
+			sourceTree = "<group>";
+		};
+		0C6548E423019E6100F6A011 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C6548E523019E8500F6A011 /* HeaderTableViewCell.swift */,
+				0C6548E623019E8500F6A011 /* HeaderTableViewCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0C8CBA4922FC4F1300F12DC7 = {
@@ -124,6 +153,8 @@
 				0C8CBA7522FC754A00F12DC7 /* ProfileImageView.swift */,
 				0C8CBA8522FC8FE200F12DC7 /* MemberTableViewCell.swift */,
 				0C8CBA8622FC8FE200F12DC7 /* MemberTableViewCell.xib */,
+				0C515C9F2301912D001F93C3 /* CustomSnapshotView.swift */,
+				0C515CA123019960001F93C3 /* CircularLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -133,7 +164,7 @@
 			children = (
 				0C8CBA5522FC4F1300F12DC7 /* AppDelegate.swift */,
 				0C8CBA5722FC4F1300F12DC7 /* LandingViewController.swift */,
-				0C8CBA8922FC910000F12DC7 /* MemberTableViewController.swift */,
+				0C6548E323019E4F00F6A011 /* Members */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -239,6 +270,7 @@
 				0C300FB022FC9FAA006281C8 /* Montserrat-Bold.ttf in Resources */,
 				0C8CBA7A22FC762600F12DC7 /* Montserrat-Medium.ttf in Resources */,
 				0C8CBA6022FC4F1400F12DC7 /* LaunchScreen.storyboard in Resources */,
+				0C6548E823019E8500F6A011 /* HeaderTableViewCell.xib in Resources */,
 				0C8CBA5D22FC4F1400F12DC7 /* Assets.xcassets in Resources */,
 				0C8CBA5B22FC4F1300F12DC7 /* Main.storyboard in Resources */,
 				0C8CBA8822FC8FE200F12DC7 /* MemberTableViewCell.xib in Resources */,
@@ -295,13 +327,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C300FCB22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift in Sources */,
+				0C515CA02301912D001F93C3 /* CustomSnapshotView.swift in Sources */,
 				0C300FC922FF136A006281C8 /* UIScrollView+positions.swift in Sources */,
 				0C8CBA7622FC754A00F12DC7 /* ProfileImageView.swift in Sources */,
 				0C8CBA8722FC8FE200F12DC7 /* MemberTableViewCell.swift in Sources */,
+				0C6548EA23019F4100F6A011 /* MemberDetailTableViewController.swift in Sources */,
 				0C8CBA5822FC4F1300F12DC7 /* LandingViewController.swift in Sources */,
 				0C8CBA8A22FC910000F12DC7 /* MemberTableViewController.swift in Sources */,
+				0C515CA223019960001F93C3 /* CircularLabel.swift in Sources */,
 				0C8CBA7E22FC7E9400F12DC7 /* RuntimeError.swift in Sources */,
 				0C300FB322FD2A03006281C8 /* UIDevice+hasNotch.swift in Sources */,
+				0C6548E723019E8500F6A011 /* HeaderTableViewCell.swift in Sources */,
 				0C8CBA5622FC4F1300F12DC7 /* AppDelegate.swift in Sources */,
 				0C300FC722FDCDB5006281C8 /* API.swift in Sources */,
 				0C8CBA7C22FC784B00F12DC7 /* Member.swift in Sources */,

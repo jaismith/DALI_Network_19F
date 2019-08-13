@@ -10,28 +10,39 @@ import UIKit
 import Kingfisher
 import os.log
 
-@IBDesignable class ProfileImageView: UIImageView {
+class ProfileImageView: UIImageView {
 
-    // MARK: Public Methods
+    // MARK: Overrides
 
-    func configure(for member: Member) {
+    override func awakeFromNib() {
         self.kf.indicatorType = .activity
-
-        DispatchQueue.main.async {
-            self.kf.setImage(with: member.picture, placeholder: UIImage(named: "person.crop.circle"), options: nil, progressBlock: nil, completionHandler: { result in
-                switch result {
-                case .failure:
-                    os_log("Error loading profile image for member %@", log: OSLog.default, type: .error, member.name)
-
-                default:
-                    break
-                }
-            })
-        }
 
         // make round
         self.contentMode = .scaleAspectFill
         self.layer.cornerRadius = floor(self.frame.height / 2)
         self.layer.masksToBounds = true
+    }
+
+    // MARK: Public Methods
+
+    func configure(for member: Member) {
+        self.kf.setImage(
+            with: member.picture,
+            placeholder: UIImage(named: "person.crop.circle"),
+            options: [
+                .processor(DownsamplingImageProcessor(size: frame.size)),
+                .scaleFactor(UIScreen.main.scale),
+                .cacheOriginalImage
+            ],
+            progressBlock: nil,
+            completionHandler: { result in
+            switch result {
+            case .failure:
+                os_log("Error loading profile image for member %@", log: OSLog.default, type: .error, member.name)
+
+            default:
+                break
+            }
+        })
     }
 }

@@ -28,6 +28,9 @@ class LandingViewController: UIViewController {
         // use hero animations
         self.navigationController?.hero.navigationAnimationType = .fade
 
+        // set geto animation background color
+        Hero.shared.containerColor = UIColor(red: 18 / 255, green: 36 / 255, blue: 67 / 255, alpha: 1)
+
         // apply curve to button views
         membersView.layer.cornerRadius = 14
         membersView.layer.masksToBounds = true
