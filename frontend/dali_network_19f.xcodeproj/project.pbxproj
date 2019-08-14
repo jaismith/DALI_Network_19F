@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0B2F0A230465F600ECD3DE /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B2F08230465F600ECD3DE /* InfoTableViewCell.swift */; };
+		0C0B2F0B230465F600ECD3DE /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C0B2F09230465F600ECD3DE /* InfoTableViewCell.xib */; };
+		0C10E65A230485B200662BF1 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C10E658230485B200662BF1 /* MapTableViewCell.swift */; };
+		0C10E65B230485B200662BF1 /* MapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C10E659230485B200662BF1 /* MapTableViewCell.xib */; };
 		0C300FAF22FC9FAA006281C8 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C67245322FC94F6004B50F7 /* Montserrat-SemiBold.ttf */; };
 		0C300FB022FC9FAA006281C8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C67245422FC96AE004B50F7 /* Montserrat-Bold.ttf */; };
 		0C300FB322FD2A03006281C8 /* UIDevice+hasNotch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FB222FD2A03006281C8 /* UIDevice+hasNotch.swift */; };
@@ -14,10 +18,10 @@
 		0C300FC922FF136A006281C8 /* UIScrollView+positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FC822FF1369006281C8 /* UIScrollView+positions.swift */; };
 		0C300FCB22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FCA22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift */; };
 		0C515CA02301912D001F93C3 /* CustomSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C515C9F2301912D001F93C3 /* CustomSnapshotView.swift */; };
-		0C515CA223019960001F93C3 /* CircularLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C515CA123019960001F93C3 /* CircularLabel.swift */; };
 		0C6548E723019E8500F6A011 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6548E523019E8500F6A011 /* HeaderTableViewCell.swift */; };
 		0C6548E823019E8500F6A011 /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6548E623019E8500F6A011 /* HeaderTableViewCell.xib */; };
 		0C6548EA23019F4100F6A011 /* MemberDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6548E923019F4100F6A011 /* MemberDetailTableViewController.swift */; };
+		0C78B61123046F6300C50D04 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C78B61023046F6300C50D04 /* Montserrat-MediumItalic.ttf */; };
 		0C8CBA5622FC4F1300F12DC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5522FC4F1300F12DC7 /* AppDelegate.swift */; };
 		0C8CBA5822FC4F1300F12DC7 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5722FC4F1300F12DC7 /* LandingViewController.swift */; };
 		0C8CBA5B22FC4F1300F12DC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5922FC4F1300F12DC7 /* Main.storyboard */; };
@@ -30,22 +34,28 @@
 		0C8CBA8722FC8FE200F12DC7 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA8522FC8FE200F12DC7 /* MemberTableViewCell.swift */; };
 		0C8CBA8822FC8FE200F12DC7 /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CBA8622FC8FE200F12DC7 /* MemberTableViewCell.xib */; };
 		0C8CBA8A22FC910000F12DC7 /* MemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA8922FC910000F12DC7 /* MemberTableViewController.swift */; };
+		0CAF55FC23049AC500CE976C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF55FB23049AC500CE976C /* Location.swift */; };
+		0CB74EFC23045E1C0062839A /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB74EFB23045E1C0062839A /* CircularView.swift */; };
 		ADB661FD9718C53B99E57259 /* Pods_dali_network_19f.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663DE9E4001D29C2D72D73BB /* Pods_dali_network_19f.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0928B311E2D8DAB6AB84E813 /* Pods-dali_network_19f.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dali_network_19f.debug.xcconfig"; path = "Target Support Files/Pods-dali_network_19f/Pods-dali_network_19f.debug.xcconfig"; sourceTree = "<group>"; };
+		0C0B2F08230465F600ECD3DE /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		0C0B2F09230465F600ECD3DE /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
+		0C10E658230485B200662BF1 /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
+		0C10E659230485B200662BF1 /* MapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapTableViewCell.xib; sourceTree = "<group>"; };
 		0C300FB222FD2A03006281C8 /* UIDevice+hasNotch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+hasNotch.swift"; sourceTree = "<group>"; };
 		0C300FC622FDCDB5006281C8 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		0C300FC822FF1369006281C8 /* UIScrollView+positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+positions.swift"; sourceTree = "<group>"; };
 		0C300FCA22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+direction.swift"; sourceTree = "<group>"; };
 		0C515C9F2301912D001F93C3 /* CustomSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSnapshotView.swift; sourceTree = "<group>"; };
-		0C515CA123019960001F93C3 /* CircularLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLabel.swift; sourceTree = "<group>"; };
 		0C6548E523019E8500F6A011 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		0C6548E623019E8500F6A011 /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
 		0C6548E923019F4100F6A011 /* MemberDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailTableViewController.swift; sourceTree = "<group>"; };
 		0C67245322FC94F6004B50F7 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		0C67245422FC96AE004B50F7 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		0C78B61023046F6300C50D04 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
 		0C8CBA5222FC4F1300F12DC7 /* dali_network_19f.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dali_network_19f.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C8CBA5522FC4F1300F12DC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C8CBA5722FC4F1300F12DC7 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +70,8 @@
 		0C8CBA8522FC8FE200F12DC7 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 		0C8CBA8622FC8FE200F12DC7 /* MemberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberTableViewCell.xib; sourceTree = "<group>"; };
 		0C8CBA8922FC910000F12DC7 /* MemberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewController.swift; sourceTree = "<group>"; };
+		0CAF55FB23049AC500CE976C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		0CB74EFB23045E1C0062839A /* CircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
 		4B485A90948B521403567FE2 /* Pods-dali_network_19f.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dali_network_19f.release.xcconfig"; path = "Target Support Files/Pods-dali_network_19f/Pods-dali_network_19f.release.xcconfig"; sourceTree = "<group>"; };
 		663DE9E4001D29C2D72D73BB /* Pods_dali_network_19f.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dali_network_19f.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,6 +113,10 @@
 			children = (
 				0C6548E523019E8500F6A011 /* HeaderTableViewCell.swift */,
 				0C6548E623019E8500F6A011 /* HeaderTableViewCell.xib */,
+				0C0B2F08230465F600ECD3DE /* InfoTableViewCell.swift */,
+				0C0B2F09230465F600ECD3DE /* InfoTableViewCell.xib */,
+				0C10E658230485B200662BF1 /* MapTableViewCell.swift */,
+				0C10E659230485B200662BF1 /* MapTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,6 +157,7 @@
 				0C8CBA7B22FC784B00F12DC7 /* Member.swift */,
 				0C8CBA7D22FC7E9400F12DC7 /* RuntimeError.swift */,
 				0C300FC622FDCDB5006281C8 /* API.swift */,
+				0CAF55FB23049AC500CE976C /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -154,7 +171,7 @@
 				0C8CBA8522FC8FE200F12DC7 /* MemberTableViewCell.swift */,
 				0C8CBA8622FC8FE200F12DC7 /* MemberTableViewCell.xib */,
 				0C515C9F2301912D001F93C3 /* CustomSnapshotView.swift */,
-				0C515CA123019960001F93C3 /* CircularLabel.swift */,
+				0CB74EFB23045E1C0062839A /* CircularView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +202,7 @@
 				0C8CBA7922FC762600F12DC7 /* Montserrat-Medium.ttf */,
 				0C67245322FC94F6004B50F7 /* Montserrat-SemiBold.ttf */,
 				0C67245422FC96AE004B50F7 /* Montserrat-Bold.ttf */,
+				0C78B61023046F6300C50D04 /* Montserrat-MediumItalic.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -266,10 +284,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C10E65B230485B200662BF1 /* MapTableViewCell.xib in Resources */,
+				0C78B61123046F6300C50D04 /* Montserrat-MediumItalic.ttf in Resources */,
 				0C300FAF22FC9FAA006281C8 /* Montserrat-SemiBold.ttf in Resources */,
 				0C300FB022FC9FAA006281C8 /* Montserrat-Bold.ttf in Resources */,
 				0C8CBA7A22FC762600F12DC7 /* Montserrat-Medium.ttf in Resources */,
 				0C8CBA6022FC4F1400F12DC7 /* LaunchScreen.storyboard in Resources */,
+				0C0B2F0B230465F600ECD3DE /* InfoTableViewCell.xib in Resources */,
 				0C6548E823019E8500F6A011 /* HeaderTableViewCell.xib in Resources */,
 				0C8CBA5D22FC4F1400F12DC7 /* Assets.xcassets in Resources */,
 				0C8CBA5B22FC4F1300F12DC7 /* Main.storyboard in Resources */,
@@ -326,7 +347,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C10E65A230485B200662BF1 /* MapTableViewCell.swift in Sources */,
 				0C300FCB22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift in Sources */,
+				0C0B2F0A230465F600ECD3DE /* InfoTableViewCell.swift in Sources */,
+				0CB74EFC23045E1C0062839A /* CircularView.swift in Sources */,
+				0CAF55FC23049AC500CE976C /* Location.swift in Sources */,
 				0C515CA02301912D001F93C3 /* CustomSnapshotView.swift in Sources */,
 				0C300FC922FF136A006281C8 /* UIScrollView+positions.swift in Sources */,
 				0C8CBA7622FC754A00F12DC7 /* ProfileImageView.swift in Sources */,
@@ -334,7 +359,6 @@
 				0C6548EA23019F4100F6A011 /* MemberDetailTableViewController.swift in Sources */,
 				0C8CBA5822FC4F1300F12DC7 /* LandingViewController.swift in Sources */,
 				0C8CBA8A22FC910000F12DC7 /* MemberTableViewController.swift in Sources */,
-				0C515CA223019960001F93C3 /* CircularLabel.swift in Sources */,
 				0C8CBA7E22FC7E9400F12DC7 /* RuntimeError.swift in Sources */,
 				0C300FB322FD2A03006281C8 /* UIDevice+hasNotch.swift in Sources */,
 				0C6548E723019E8500F6A011 /* HeaderTableViewCell.swift in Sources */,
@@ -497,7 +521,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jaismith.dali-network-19f";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -516,7 +540,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jaismith.dali-network-19f";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

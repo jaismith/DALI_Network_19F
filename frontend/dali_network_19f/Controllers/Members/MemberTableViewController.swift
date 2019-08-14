@@ -22,14 +22,17 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
     var dismissBool: Bool = false
 
     // tableview ready to load?
+    var tableViewReady: Bool = false
     var tableViewLoaded: Bool = false
     var viewDidAppear: Bool = false
-    var viewDidLayout: Bool = false
 
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // use animated transitions for navcontroller
+        self.navigationController?.hero.navigationAnimationType = .autoReverse(presenting: .push(direction: .left))
 
         // register cells
         tableView.register(UINib(nibName: "MemberTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "MemberCell")
@@ -45,9 +48,10 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
             self.members = members
             DispatchQueue.main.async {
                 if !self.viewDidAppear {
-                    self.tableViewLoaded = true
-                } else {
+                    self.tableViewReady = true
+                } else if !self.tableViewLoaded {
                     self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+                    self.tableViewLoaded = true
                 }
             }
         }
@@ -60,6 +64,9 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        self.hero.isEnabled = true
+
         // customize navigationbar
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.backgroundColor = self.tableView.backgroundColor
@@ -68,20 +75,14 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if tableViewLoaded {
+        if tableViewReady, !tableViewLoaded {
             self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+            tableViewLoaded = true
         } else {
             viewDidAppear = true
         }
-    }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        viewDidLayout = true
-
-        guard isViewLoaded, view.window != nil, !tableViewLoaded else { return }
-        tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
-        tableViewLoaded = true
+        self.navigationController?.hero.isEnabled = false
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -110,11 +111,15 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
         // Configure the cell...
         cell.load(from: members![indexPath.row])
 
+        // start loading details about member in background (will stay in cache)
+        API.shared.getMember(members![indexPath.row].name, completion: {_ in return})
+
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let member = members![indexPath.row]
+        self.hero.isEnabled = false
         performSegue(withIdentifier: "MemberDetail", sender: member)
     }
 
@@ -127,6 +132,7 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
         if recognizer.direction == .down && tableView.isAtTop {
             if dismissBool {
                 dismissBool = false
+                self.navigationController?.hero.isEnabled = true
                 hero.dismissViewController()
                 self.hero.modalAnimationType = .uncover(direction: .down)
                 progressBool = true
@@ -150,6 +156,7 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
                 Hero.shared.finish()
             } else {
                 Hero.shared.cancel()
+                self.navigationController?.hero.isEnabled = false
             }
         }
     }

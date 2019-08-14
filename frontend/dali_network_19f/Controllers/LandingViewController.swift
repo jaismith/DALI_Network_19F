@@ -22,9 +22,6 @@ class LandingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // hide navbar
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-
         // use hero animations
         self.navigationController?.hero.navigationAnimationType = .fade
 
@@ -51,6 +48,8 @@ class LandingViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        // config nav bar
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
