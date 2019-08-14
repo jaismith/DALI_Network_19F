@@ -178,10 +178,15 @@ def get_location():
     # get results
     response_json = response.json()
 
-    # get top candidate
-    candidate = response_json['candidates'][0]
+    # get candidates
+    candidates = response_json['candidates']
 
-    return jsonify(candidate['geometry']), 200
+    # return 404 if no candidates
+    if len(candidates) == 0:
+        return jsonify("No location matches for member " + member_name), 404
+
+    # return coordinates of top result
+    return jsonify(candidates[0]['geometry']['location']), 200
 
 
 if __name__ == '__main__':

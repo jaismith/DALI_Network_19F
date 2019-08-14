@@ -10,15 +10,29 @@ import UIKit
 
 class InfoTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    // MARK: Properties
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var majorLabel: UILabel!
+    @IBOutlet weak var roleLabel: UILabel!
 
-        // Configure the view for the selected state
+    var member: Member? {
+        didSet {
+            guard let member = member, let info = member.other else {
+                return
+            }
+
+            var courseOfStudy = info["major"] ?? ""
+            if let modification = info["modification"], !modification.isEmpty {
+                courseOfStudy.append(" modified with \(modification)")
+            }
+            if let minor = info["minor"], !minor.isEmpty {
+                courseOfStudy.append(", with a minor in \(minor)")
+            }
+
+            quoteLabel.text = info["quote"]
+            majorLabel.text = courseOfStudy
+            roleLabel.text = member.role
+        }
     }
-    
 }

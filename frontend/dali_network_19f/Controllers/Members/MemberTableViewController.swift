@@ -22,9 +22,9 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
     var dismissBool: Bool = false
 
     // tableview ready to load?
+    var tableViewReady: Bool = false
     var tableViewLoaded: Bool = false
     var viewDidAppear: Bool = false
-    var viewDidLayout: Bool = false
 
     // MARK: Overrides
 
@@ -48,9 +48,10 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
             self.members = members
             DispatchQueue.main.async {
                 if !self.viewDidAppear {
-                    self.tableViewLoaded = true
-                } else {
+                    self.tableViewReady = true
+                } else if !self.tableViewLoaded {
                     self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+                    self.tableViewLoaded = true
                 }
             }
         }
@@ -74,22 +75,14 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if tableViewLoaded {
+        if tableViewReady, !tableViewLoaded {
             self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
+            tableViewLoaded = true
         } else {
             viewDidAppear = true
         }
 
         self.navigationController?.hero.isEnabled = false
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        viewDidLayout = true
-
-        guard isViewLoaded, view.window != nil, !tableViewLoaded else { return }
-        tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
-        tableViewLoaded = true
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -117,6 +110,9 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
 
         // Configure the cell...
         cell.load(from: members![indexPath.row])
+
+        // start loading details about member in background (will stay in cache)
+        API.shared.getMember(members![indexPath.row].name, completion: {_ in return})
 
         return cell
     }

@@ -7,3 +7,19 @@
 //
 
 import Foundation
+import UIKit
+
+struct Location: Codable {
+
+    // MARK: Properties
+
+    var latitude: Double
+    var longitude: Double
+
+    // MARK: Codable
+
+    enum CodingKeys: String, CodingKey {
+        case latitude = "lat"
+        case longitude = "lng"
+    }
+}
