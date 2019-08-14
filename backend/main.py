@@ -7,6 +7,7 @@ import os
 import json
 import firebase_admin
 import grip
+import requests
 
 from flask import Flask, jsonify, request, Response, redirect
 from firebase_admin import credentials
@@ -134,13 +135,54 @@ def members_filter():
     members = network.get_members_of('(%s, %s)' % (field, value))
 
     # convert members to response compatible format
-    # members_dict = dict()
     for member in members:
         member = member.to_dict(abbreviated = True)
-        # member_dict = member.to_dict(abbreviated = True)
-        # members_dict[member.name] = member_dict
     
     return jsonify(members), 200
+
+@app.route('/api/members/location', methods = ['GET'])
+def get_location():
+    member_name = request.args['member']
+
+    # return bad request if no member provided
+    if member_name == None:
+        return Response(status = 400)
+
+    # get members from store
+    members = db.collection('source').document('keyed').get().to_dict()
+
+    # get member object
+    if member_name not in members:
+        return jsonify(member_name + " not found."), 404
+    member = members[member_name]
+    
+    # get place name
+    if 'home' not in member:
+        return jsonify(member_name + " has no associated home."), 404
+    place = member['home']
+
+    # get places api key
+    key = db.collection('settings').document('keys').get().to_dict()['PLACES_API_KEY']
+    
+    # request coordinates from places api
+    response = requests.get(
+        'https://maps.googleapis.com/maps/api/place/findplacefromtext/json',
+        params = {
+            'input': place,
+            'inputtype': 'textquery',
+            'fields': 'geometry/location',
+            'key': key,
+        },
+    )
+
+    # get results
+    response_json = response.json()
+
+    # get top candidate
+    candidate = response_json['candidates'][0]
+
+    return jsonify(candidate['geometry']), 200
+
 
 if __name__ == '__main__':
 	app.run(host = '127.0.0.1', port = 8080, debug = True)
