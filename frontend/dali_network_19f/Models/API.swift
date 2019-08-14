@@ -87,7 +87,7 @@ class API {
     }
 
     func getLocation(_ name: String, completion: @escaping (Location?) -> Void) {
-        session.request("http://127.0.0.1:8080/api/members/location", method: .get, parameters: ["member": name], encoding: URLEncoding.default)
+        session.request("http://dali-network-19f.appspot.com/api/members/location", method: .get, parameters: ["member": name], encoding: URLEncoding.default)
             .validate(statusCode: [200])
             .validate(contentType: ["application/json"])
             .responseJSON { response in
