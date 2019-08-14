@@ -22,6 +22,8 @@ class MemberDetailTableViewController: UITableViewController {
             return
         }
 
+        self.hero.isEnabled = false
+
         super.viewDidLoad()
     }
 

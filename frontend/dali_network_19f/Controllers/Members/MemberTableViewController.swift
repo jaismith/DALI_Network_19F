@@ -31,6 +31,9 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // use animated transitions for navcontroller
+        self.navigationController?.hero.navigationAnimationType = .autoReverse(presenting: .push(direction: .left))
+
         // register cells
         tableView.register(UINib(nibName: "MemberTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "MemberCell")
 
@@ -60,6 +63,9 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        self.hero.isEnabled = true
+
         // customize navigationbar
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.backgroundColor = self.tableView.backgroundColor
@@ -73,6 +79,8 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
         } else {
             viewDidAppear = true
         }
+
+        self.navigationController?.hero.isEnabled = false
     }
 
     override func viewDidLayoutSubviews() {
@@ -115,6 +123,7 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let member = members![indexPath.row]
+        self.hero.isEnabled = false
         performSegue(withIdentifier: "MemberDetail", sender: member)
     }
 
@@ -127,6 +136,7 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
         if recognizer.direction == .down && tableView.isAtTop {
             if dismissBool {
                 dismissBool = false
+                self.navigationController?.hero.isEnabled = true
                 hero.dismissViewController()
                 self.hero.modalAnimationType = .uncover(direction: .down)
                 progressBool = true
@@ -150,6 +160,7 @@ class MemberTableViewController: UITableViewController, UIGestureRecognizerDeleg
                 Hero.shared.finish()
             } else {
                 Hero.shared.cancel()
+                self.navigationController?.hero.isEnabled = false
             }
         }
     }

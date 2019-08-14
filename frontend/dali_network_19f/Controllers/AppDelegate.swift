@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // hit api for member list (so it's cached later)
-        API.shared.getMembers(completion: {members in return})
+        API.shared.getMembers(completion: {_ in return})
 
         return true
     }
