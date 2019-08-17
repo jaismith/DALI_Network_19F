@@ -2,11 +2,14 @@
 
 import os
 
+from helpers.location import get_home
+
 # models
 class Member:
   def __init__(self, name, properties):
     self.name = name
     self.properties = properties
+    self.location = get_home(properties['home'])
 
   @staticmethod
   def from_dict(source):
@@ -22,7 +25,7 @@ class Member:
     if not abbreviated:
       dictionary = self.properties
     else:
-      important = ['year', 'picture', 'role']
+      important = ['year', 'picture', 'role', 'home']
       dictionary = { key: value for key, value in self.properties.items() if key in important }
     
     # add name to response

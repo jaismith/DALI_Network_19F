@@ -15,7 +15,7 @@ from firebase_admin import firestore
 from grip import render_page
 
 from models import Member, Network
-from helpers import generate_network
+from helpers.network import generate_network
 
 # environment vars
 GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
@@ -23,10 +23,10 @@ GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
 app = Flask(__name__)
 
 
-# authenticate with firestore
+# initialize firebase app
 cred = credentials.ApplicationDefault()
 firebase_admin.initialize_app(cred, {
-  'projectId': GOOGLE_CLOUD_PROJECT,
+    'projectId': GOOGLE_CLOUD_PROJECT,
 })
 
 # get db ref
@@ -42,10 +42,6 @@ def home():
 # datasource
 @app.route('/api/source/<data_type>', methods = ['GET', 'POST'])
 def push(data_type):
-    # # get bucket
-    # storage_client = storage.Client()
-    # bucket = storage_client.get_bucket(CLOUD_STORAGE_BUCKET)
-
     if request.method == 'POST':
         # return error if missing data file
         if 'data' in request.files:
@@ -68,6 +64,8 @@ def push(data_type):
             else:
                 data[str(index)] = value
 
+        print('Writing raw data to database')
+
         # write raw data to firestore
         doc = db.collection('source').document('%s' % data_type)
         doc.set(data)
@@ -77,6 +75,8 @@ def push(data_type):
 
         # if keyed, generate network
         if data_type == 'keyed':
+            print('Generating network...')
+
             network = generate_network(data)
 
             # write network to firestore
