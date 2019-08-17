@@ -75,7 +75,8 @@ class API {
                 switch response.result {
                 case .success:
                     guard let data = response.data, let deserializedMember = try? JSONDecoder().decode(Member.self, from: data) else {
-                        fatalError()
+                        os_log("Error deserializing member %@", log: OSLog.default, type: .error, name)
+                        return
                     }
 
                     member = deserializedMember
@@ -99,7 +100,8 @@ class API {
                 switch response.result {
                 case .success:
                     guard let data = response.data, let deserializedLocation = try? JSONDecoder().decode(Location.self, from: data) else {
-                        fatalError()
+                        os_log("Error deserializing location for member %@", log: OSLog.default, type: .error, name)
+                        return
                     }
 
                     location = deserializedLocation

@@ -15,6 +15,7 @@ class MapTableViewCell: UITableViewCell {
     // MARK: Properties
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var label: UILabel!
 
     var member: Member? {
         didSet {
