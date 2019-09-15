@@ -16,6 +16,7 @@ class Member: Decodable {
     var year: String
     var picture: URL
     var role: String
+    var location: Location
 
     var other: [String: String]?
 
@@ -30,33 +31,41 @@ class Member: Decodable {
         case year
         case picture
         case role
+        case location
     }
 
     required init(from decoder: Decoder) throws {
         // get container
-        let container = try decoder.singleValueContainer()
+        var container = try decoder.unkeyedContainer()
 
-        var name: String?, year: String?, picture: URL?, role: String?
+        var name: String?, year: String?, picture: URL?, role: String?, location: Location?
         other = [String: String]()
 
-        let data = try container.decode([String: String].self)
+//        while !container.isAtEnd {
+//
+//        }
+
+        let data = try container.decode([String: Data].self)
         for entry in data {
             if let requiredField = CodingKeys(rawValue: entry.key) {
                 switch requiredField {
                 case .name:
-                    name = entry.value
+                    name = String(data: entry.value, encoding: .utf8)
 
                 case .year:
-                    year = entry.value
+                    year = String(data: entry.value, encoding: .utf8)
 
                 case .picture:
-                    picture = URL(string: entry.value)!
+                    picture = URL(string: String(data: entry.value, encoding: .utf8)!)!
 
                 case .role:
-                    role = entry.value
+                    role = String(data: entry.value, encoding: .utf8)
+
+                case .location:
+                    location = try JSONDecoder().decode(Location.self, from: entry.value)
                 }
             } else {
-                other![entry.key] = entry.value
+                other![entry.key] = String(data: entry.value, encoding: .utf8)
             }
         }
 
@@ -64,5 +73,6 @@ class Member: Decodable {
         self.year = year!
         self.picture = picture!
         self.role = role!
+        self.location = location!
     }
 }

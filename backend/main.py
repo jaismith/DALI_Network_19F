@@ -48,7 +48,7 @@ def push(data_type):
             file = request.files['data']
         else:
             return Response(status = 400)
-
+        print("received post")
         # check for json filetype
         if os.path.splitext(file.filename)[1] != '.json':
             return jsonify("Invalid file, must have .json extension"), 400
@@ -105,7 +105,10 @@ def members(member = None):
     # check if specific user was requested
     if member is not None:
         if member in members:
-            return jsonify(members[member]), 200
+            # get member as object
+            member = Member.from_dict(members[member])
+
+            return jsonify(member.to_dict(abbreviated = False)), 200
         else:
             return Response(status = 404)
 

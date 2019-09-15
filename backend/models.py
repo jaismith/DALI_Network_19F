@@ -2,14 +2,19 @@
 
 import os
 
-from helpers.location import get_home
+from helpers.location import get_coordinates
 
 # models
 class Member:
   def __init__(self, name, properties):
     self.name = name
     self.properties = properties
-    self.location = get_home(properties['home'])
+
+    # check for home field
+    if 'home' in properties:
+      self.location = get_coordinates(properties['home'])
+    else:
+      self.location = None
 
   @staticmethod
   def from_dict(source):
@@ -22,14 +27,25 @@ class Member:
     return member
 
   def to_dict(self, abbreviated = False):
-    if not abbreviated:
-      dictionary = self.properties
-    else:
-      important = ['year', 'picture', 'role', 'home']
-      dictionary = { key: value for key, value in self.properties.items() if key in important }
+    important = ['year', 'picture', 'role']
+    dictionary = {}
+
+    # loop through all properties
+    for key, value in self.properties.items():
+      # if important, give own entry
+      if key in important:
+        dictionary[key] = value
+
+      # otherwise, include in 'other' field if response is unabbreviated
+      elif not abbreviated:
+        if 'other' not in dictionary.keys():
+          dictionary['other'] = {}
+        
+        dictionary['other'][key] = value          
     
     # add name to response
     dictionary['name'] = self.name
+    dictionary['location'] = self.location
 
     return dictionary
 

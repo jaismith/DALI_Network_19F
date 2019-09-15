@@ -10,24 +10,19 @@ from firebase_admin import firestore
 GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
 
 
-def get_home(member):
+def get_coordinates(home):
     # get firebase instance and db ref
     firebase_admin.get_app()
     db = firestore.client()
 
-    # extract 'home' entry in member data
-    if 'home' not in member:
-        return 'no home'
-    place = member['home']
-
     # get places api key
     key = db.collection('settings').document('keys').get().to_dict()['PLACES_API_KEY']
-    
+    print("getting coords for %s" % home)
     # request coordinates from places api
     response = requests.get(
         'https://maps.googleapis.com/maps/api/place/findplacefromtext/json',
         params = {
-            'input': place,
+            'input': home,
             'inputtype': 'textquery',
             'fields': 'geometry/location',
             'key': key,
@@ -42,6 +37,7 @@ def get_home(member):
 
     # return 404 if no candidates
     if len(candidates) == 0:
+        print("oops")
         return 'no matches'
-
+    print("got")
     return candidates[0]['geometry']['location']
