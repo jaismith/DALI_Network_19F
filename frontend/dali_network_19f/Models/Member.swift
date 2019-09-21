@@ -16,7 +16,7 @@ class Member: Decodable {
     var year: String
     var picture: URL
     var role: String
-    var location: Location
+    var location: Location?
 
     var other: [String: String]?
 
@@ -42,7 +42,7 @@ class Member: Decodable {
         year = try container.decode(String.self, forKey: .year)
         let pictureURL = URL(string: try container.decode(String.self, forKey: .picture))
         role = try container.decode(String.self, forKey: .role)
-        location = try container.decode(Location.self, forKey: .location)
+        location = try? container.decode(Location.self, forKey: .location)
         other = try container.decodeIfPresent(Dictionary.self, forKey: .other)
         
         guard pictureURL != nil else {

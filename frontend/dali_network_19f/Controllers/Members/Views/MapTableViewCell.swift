@@ -48,28 +48,25 @@ class MapTableViewCell: UITableViewCell {
     // MARK: Public Methods
 
     func setLocation(_ member: Member) {
-        // get location
-        API.shared.getLocation(member.name, completion: { location in
-            guard let location = location else {
-                os_log("No location found for member %@", log: OSLog.default, type: .debug, member.name)
-                return
-            }
+        // check for location
+        guard let location = member.location else {
+            os_log("No location data for member %@", log: OSLog.default, type: .debug, member.name)
+            self.isHidden = true
+            
+            return
+        }
 
-            // create CLLocationCoordinate2D
-            let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        // create CLLocationCoordinate2D
+        let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
 
-            // create region
-            let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 2500000, longitudinalMeters: 2500000)
+        // create region
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 2500000, longitudinalMeters: 2500000)
 
-            // set map region
-            self.mapView.setRegion(region, animated: true)
+        // set map region
+        self.mapView.setRegion(region, animated: true)
 
-            // create annotation
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-
-            // add annotation to map
-            self.mapView.addAnnotation(annotation)
-        })
+        // create annotation
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
     }
 }
