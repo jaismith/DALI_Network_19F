@@ -32,47 +32,23 @@ class Member: Decodable {
         case picture
         case role
         case location
+        case other
     }
 
     required init(from decoder: Decoder) throws {
-        // get container
-        var container = try decoder.unkeyedContainer()
-
-        var name: String?, year: String?, picture: URL?, role: String?, location: Location?
-        other = [String: String]()
-
-//        while !container.isAtEnd {
-//
-//        }
-
-        let data = try container.decode([String: Data].self)
-        for entry in data {
-            if let requiredField = CodingKeys(rawValue: entry.key) {
-                switch requiredField {
-                case .name:
-                    name = String(data: entry.value, encoding: .utf8)
-
-                case .year:
-                    year = String(data: entry.value, encoding: .utf8)
-
-                case .picture:
-                    picture = URL(string: String(data: entry.value, encoding: .utf8)!)!
-
-                case .role:
-                    role = String(data: entry.value, encoding: .utf8)
-
-                case .location:
-                    location = try JSONDecoder().decode(Location.self, from: entry.value)
-                }
-            } else {
-                other![entry.key] = String(data: entry.value, encoding: .utf8)
-            }
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        name = try container.decode(String.self, forKey: .name)
+        year = try container.decode(String.self, forKey: .year)
+        let pictureURL = URL(string: try container.decode(String.self, forKey: .picture))
+        role = try container.decode(String.self, forKey: .role)
+        location = try container.decode(Location.self, forKey: .location)
+        other = try container.decodeIfPresent(Dictionary.self, forKey: .other)
+        
+        guard pictureURL != nil else {
+            throw RuntimeError("Invalid picture URL")
         }
-
-        self.name = name!
-        self.year = year!
-        self.picture = picture!
-        self.role = role!
-        self.location = location!
+        
+        picture = pictureURL!
     }
 }

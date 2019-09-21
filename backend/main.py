@@ -48,7 +48,7 @@ def push(data_type):
             file = request.files['data']
         else:
             return Response(status = 400)
-        print("received post")
+
         # check for json filetype
         if os.path.splitext(file.filename)[1] != '.json':
             return jsonify("Invalid file, must have .json extension"), 400
@@ -95,27 +95,28 @@ def push(data_type):
 @app.route('/api/members', methods = ['GET'])
 @app.route('/api/members/<member>', methods = ['GET'])
 def members(member = None):
-    # get members from database
-    members = db.collection('source').document('keyed').get().to_dict()
+    # load network from database
+    network = Network.from_dict(db.collection('data').document('network').get().to_dict())
 
     # check to make sure members were successfully loaded
-    if members == None:
+    if network is None:
         return Response(status = 503)
 
-    # check if specific user was requested
-    if member is not None:
-        if member in members:
-            # get member as object
-            member = Member.from_dict(members[member])
+    # get member/members from network
+    response = network.get_members(member)
 
-            return jsonify(member.to_dict(abbreviated = False)), 200
-        else:
-            return Response(status = 404)
+    # check that network contained a match
+    if response is None:
+        return Response(status = 404)
+
+    # if specific member was requested, return full member object
+    if isinstance(response, Member):
+        return jsonify(response.to_dict(abbreviated = False)), 200
 
     # abbreviate member info (less info)
     member_dict = []
-    for member in members.values():
-        member_dict.append(Member.from_dict(member).to_dict(abbreviated = True))
+    for member in response.values():
+        member_dict.append(member.to_dict(abbreviated = True))
 
     # return all users
     return jsonify(member_dict), 200

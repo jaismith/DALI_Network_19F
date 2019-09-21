@@ -35,6 +35,8 @@ def get_coordinates(home):
     # get candidates
     candidates = response_json['candidates']
 
+    # DEBUGGING PRINT STATEMENTS BELOW, REMOVE IN PRODUCTION
+
     # return 404 if no candidates
     if len(candidates) == 0:
         print("oops")

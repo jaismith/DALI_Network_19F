@@ -10,6 +10,9 @@ import Foundation
 import Alamofire
 import os.log
 
+// api root
+let apiRoot = "http://127.0.0.1:8080"//"http://dali-network-19f.appspot.com"
+
 class API {
 
     // MARK: Properties
@@ -17,7 +20,7 @@ class API {
     static private(set) var shared = API()
     var session: Alamofire.Session
 
-    let members = ""
+    let members = String()
 
     // MARK: Initializers
 
@@ -30,7 +33,7 @@ class API {
     // MARK: Public Methods
 
     func getMembers(completion: @escaping ([Member]?) -> Void) {
-        guard let url = URL(string: "http://dali-network-19f.appspot.com/api/members") else {
+        guard let url = URL(string: apiRoot + "/api/members") else {
             fatalError()
         }
 
@@ -59,7 +62,7 @@ class API {
     }
 
     func getMember(_ name: String, completion: @escaping (Member?) -> Void) {
-        guard var base = URL(string: "http://dali-network-19f.appspot.com/api/members") else {
+        guard var base = URL(string: apiRoot + "/api/members") else {
             return
         }
 
@@ -88,7 +91,7 @@ class API {
     }
 
     func getLocation(_ name: String, completion: @escaping (Location?) -> Void) {
-        session.request("http://dali-network-19f.appspot.com/api/members/location", method: .get, parameters: ["member": name], encoding: URLEncoding.default)
+        session.request(apiRoot + "/api/members/location", method: .get, parameters: ["member": name], encoding: URLEncoding.default)
             .validate(statusCode: [200])
             .validate(contentType: ["application/json"])
             .responseJSON { response in

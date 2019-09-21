@@ -7,7 +7,7 @@ def generate_network(data):
     # generate list of member objects
     members = dict()
     for name, value in data.items():
-        members[name] = Member(name, value)
+        members[name] = Member(value, raw = True)
 
     # generate network
     network = Network(members)

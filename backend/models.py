@@ -6,46 +6,39 @@ from helpers.location import get_coordinates
 
 # models
 class Member:
-  def __init__(self, name, properties):
-    self.name = name
-    self.properties = properties
+  def __init__(self, data, raw = False):
+    self.name = data.pop('name')
+    self.year = data.pop('year')
+    self.picture = data.pop('picture')
+    self.role = data.pop('role')
 
-    # check for home field
-    if 'home' in properties:
-      self.location = get_coordinates(properties['home'])
+    if raw:
+      self.location = get_coordinates(data['home'])
+      self.other = data
     else:
-      self.location = None
+      self.location = data['location']
+      self.other = data['other']
 
   @staticmethod
   def from_dict(source):
     # get copy of source
     properties = source.copy()
 
-    # convert to person object
-    member = Member(properties.pop('name'), properties)
+    # extract instance variables
+    member = Member(properties)
 
     return member
 
   def to_dict(self, abbreviated = False):
-    important = ['year', 'picture', 'role']
     dictionary = {}
-
-    # loop through all properties
-    for key, value in self.properties.items():
-      # if important, give own entry
-      if key in important:
-        dictionary[key] = value
-
-      # otherwise, include in 'other' field if response is unabbreviated
-      elif not abbreviated:
-        if 'other' not in dictionary.keys():
-          dictionary['other'] = {}
-        
-        dictionary['other'][key] = value          
-    
-    # add name to response
     dictionary['name'] = self.name
+    dictionary['year'] = self.year
+    dictionary['picture'] = self.picture
+    dictionary['role'] = self.role
     dictionary['location'] = self.location
+
+    if not abbreviated:
+      dictionary['other'] = self.other
 
     return dictionary
 
@@ -71,7 +64,11 @@ class Network():
     
     # populate groups and index
     for member in members.values():
-      for key, value in member.properties.items():
+      properties = member.other
+      properties['year'] = member.year
+      properties['role'] = member.role
+
+      for key, value in properties.items():
         # create property
         property = '(%s, %s)' % (key, value)
 
@@ -109,6 +106,15 @@ class Network():
     dictionary['membership_index'] = self.membership_index
 
     return dictionary
+
+  def get_members(self, name = None):
+    if name is None:
+      return self.members
+
+    if name in self.members.keys():
+      return self.members[name]
+
+    return None
 
   # get all groups, option to filter by key (i.e. "role")
   def get_groups(self, key = None):
