@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vzB-Ez-ERn">
-                        <rect key="frame" x="20" y="20" width="280" height="123.5"/>
+                        <rect key="frame" x="20" y="10" width="280" height="143.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="vzB-Ez-ERn" secondAttribute="height" multiplier="2:1" priority="999" id="Uvz-6G-hwS"/>
                         </constraints>
@@ -30,9 +30,9 @@
                     <constraint firstItem="vzB-Ez-ERn" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="I5i-or-EzO"/>
                     <constraint firstItem="vzB-Ez-ERn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="OaH-cT-WX2"/>
                     <constraint firstItem="vzB-Ez-ERn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Rt5-Bk-5mK"/>
-                    <constraint firstItem="vzB-Ez-ERn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="Sse-PE-hbt"/>
+                    <constraint firstItem="vzB-Ez-ERn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Sse-PE-hbt"/>
                     <constraint firstAttribute="trailing" secondItem="vzB-Ez-ERn" secondAttribute="trailing" constant="20" id="fZv-4T-T8u"/>
-                    <constraint firstAttribute="bottom" secondItem="vzB-Ez-ERn" secondAttribute="bottom" constant="20" id="nxz-xi-nvb"/>
+                    <constraint firstAttribute="bottom" secondItem="vzB-Ez-ERn" secondAttribute="bottom" constant="10" id="nxz-xi-nvb"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

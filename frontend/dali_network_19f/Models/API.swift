@@ -11,7 +11,7 @@ import Alamofire
 import os.log
 
 // api root
-let apiRoot = "http://localhost.charlesproxy.com:8080"//"http://dali-network-19f.appspot.com"
+let apiRoot = "http://dali-network-19f.appspot.com"
 
 class API {
 

@@ -68,5 +68,8 @@ class MapTableViewCell: UITableViewCell {
         // create annotation
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
+        
+        // add annotation to map
+        self.mapView.addAnnotation(annotation)
     }
 }

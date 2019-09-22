@@ -35,6 +35,7 @@ class MemberDetailTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "HeaderTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "HeaderCell")
         tableView.register(UINib(nibName: "InfoTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "InfoCell")
         tableView.register(UINib(nibName: "MapTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "MapCell")
+        tableView.register(UINib(nibName: "FunFactTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "FactCell")
 
         // set view title
         title = member.displayName
@@ -51,7 +52,7 @@ class MemberDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 3
+            return 4
 
         default:
             return 0
@@ -95,6 +96,17 @@ class MemberDetailTableViewController: UITableViewController {
 
                 return cell
 
+            case 3:
+                let identifier = "FactCell"
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? FunFactTableViewCell else {
+                    fatalError()
+                }
+                
+                // config cell
+                cell.member = member
+                
+                return cell
+                
             default:
                 fatalError()
             }

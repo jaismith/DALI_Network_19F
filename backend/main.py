@@ -15,7 +15,7 @@ from firebase_admin import firestore
 from grip import render_page
 
 from models import Member, Network
-from helpers.network import generate_network
+from helpers.network import generate_network, process_fun_facts
 from helpers.fun_facts import generate_fun_facts
 
 # environment vars
@@ -78,7 +78,9 @@ def push(data_type):
         if data_type == 'keyed':
             print('Generating network...')
 
+            # create network and add fun facts
             network = generate_network(data)
+            process_fun_facts(network)
 
             # write network to firestore
             doc = db.collection('data').document('network')
@@ -146,21 +148,21 @@ def members_filter():
 
     return jsonify(matches), 200
 
-# fun facts about members
-@app.route('/api/members/<member>/fun_facts', methods = ['GET'])
-def fun_facts(member = None):
-    # return 400 if no member specified
-    if member == None:
-        return jsonify('No member specified'), 400
+# # fun facts about members
+# @app.route('/api/members/<member>/fun_facts', methods = ['GET'])
+# def fun_facts(member = None):
+#     # return 400 if no member specified
+#     if member == None:
+#         return jsonify('No member specified'), 400
 
-    # load network from database
-    network = Network.from_dict(db.collection('data').document('network').get().to_dict())
+#     # load network from database
+#     network = Network.from_dict(db.collection('data').document('network').get().to_dict())
 
-    # check to make sure members were successfully loaded
-    if network is None:
-        return Response(status = 503)
+#     # check to make sure members were successfully loaded
+#     if network is None:
+#         return Response(status = 503)
 
-    return generate_fun_facts(member, network)
+#     return generate_fun_facts(member, network)
     
 
 if __name__ == '__main__':

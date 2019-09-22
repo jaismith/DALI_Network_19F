@@ -4,6 +4,7 @@ import os
 
 from helpers.location import get_coordinates
 
+
 # models
 class Member:
   def __init__(self, data, raw = False):

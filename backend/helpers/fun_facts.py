@@ -44,8 +44,11 @@ def generate_fun_facts(member, network):
                 response += "{} others".format(len(members))
 
             special = False
+
+    if len(response) > 0:
+        response += "!"
                 
-    return jsonify(notable_groups, response), 200
+    return response
 
 def generate_field_language(field, value, special = False):
     # field specific language
@@ -71,5 +74,8 @@ def generate_field_language(field, value, special = False):
         return "{} a favorite color, {}, with ".format(('share', 'shares')[special], value)
     elif field == 'phoneType':
         return "{} the same phone type, {}, as ".format(('have', 'has')[special], value)
+    elif field == 'home':
+        return "{} from the same place, {}, as ".format(("are", "is")[special], value)
     else:
-        return None
+        print(field, value)
+        return 'field, value'
