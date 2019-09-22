@@ -138,59 +138,12 @@ def members_filter():
     # get members matching tag
     members = network.get_members_of('(%s, %s)' % (field, value))
 
-    # convert members to response compatible format
+    # create serializable response
+    matches = []
     for member in members:
-        member = member.to_dict(abbreviated = True)
-    
-    return jsonify(members), 200
+        matches.append(member.to_dict(abbreviated = True))
 
-@app.route('/api/members/location', methods = ['GET'])
-def get_location():
-    member_name = request.args['member']
-
-    # return bad request if no member provided
-    if member_name == None:
-        return Response(status = 400)
-
-    # get members from store
-    members = db.collection('source').document('keyed').get().to_dict()
-
-    # get member object
-    if member_name not in members:
-        return jsonify(member_name + " not found."), 404
-    member = members[member_name]
-    
-    # get place name
-    if 'home' not in member:
-        return jsonify(member_name + " has no associated home."), 404
-    place = member['home']
-
-    # get places api key
-    key = db.collection('settings').document('keys').get().to_dict()['PLACES_API_KEY']
-    
-    # request coordinates from places api
-    response = requests.get(
-        'https://maps.googleapis.com/maps/api/place/findplacefromtext/json',
-        params = {
-            'input': place,
-            'inputtype': 'textquery',
-            'fields': 'geometry/location',
-            'key': key,
-        },
-    )
-
-    # get results
-    response_json = response.json()
-
-    # get candidates
-    candidates = response_json['candidates']
-
-    # return 404 if no candidates
-    if len(candidates) == 0:
-        return jsonify("No location matches for member " + member_name), 404
-
-    # return coordinates of top result
-    return jsonify(candidates[0]['geometry']['location']), 200
+    return jsonify(matches), 200
 
 
 if __name__ == '__main__':
