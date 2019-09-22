@@ -16,6 +16,7 @@ from grip import render_page
 
 from models import Member, Network
 from helpers.network import generate_network
+from helpers.fun_facts import generate_fun_facts
 
 # environment vars
 GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
@@ -145,6 +146,22 @@ def members_filter():
 
     return jsonify(matches), 200
 
+# fun facts about members
+@app.route('/api/members/<member>/fun_facts', methods = ['GET'])
+def fun_facts(member = None):
+    # return 400 if no member specified
+    if member == None:
+        return jsonify('No member specified'), 400
+
+    # load network from database
+    network = Network.from_dict(db.collection('data').document('network').get().to_dict())
+
+    # check to make sure members were successfully loaded
+    if network is None:
+        return Response(status = 503)
+
+    return generate_fun_facts(member, network)
+    
 
 if __name__ == '__main__':
 	app.run(host = '127.0.0.1', port = 8080, debug = True)
