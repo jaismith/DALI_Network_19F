@@ -72,7 +72,7 @@ def push(data_type):
         doc.set(data)
         
         # log
-        logging.debug("Received %s data, generating Network" % data_type)
+        logging.debug("Received %s data" % data_type)
 
         # if keyed, generate network
         if data_type == 'keyed':
@@ -85,6 +85,23 @@ def push(data_type):
             # write network to firestore
             doc = db.collection('data').document('network')
             doc.set(network.to_dict())
+
+            return Response(status = 201)
+
+        # if unkeyed, parse and write to database
+        elif data_type == 'unkeyed':
+            print('Writing parsed data to database...')
+
+            # get raw stats collection
+            col = db.collection('data').document('stats').collection('raw')
+
+            # loop through all unkeyed data
+            for item in data.items():
+                # create doc for item
+                doc = col.document(item[0])
+
+                # write info
+                doc.set(item[1])
 
             return Response(status = 201)
 
@@ -147,23 +164,22 @@ def members_filter():
         matches.append(member.to_dict(abbreviated = True))
 
     return jsonify(matches), 200
-
-# # fun facts about members
-# @app.route('/api/members/<member>/fun_facts', methods = ['GET'])
-# def fun_facts(member = None):
-#     # return 400 if no member specified
-#     if member == None:
-#         return jsonify('No member specified'), 400
-
-#     # load network from database
-#     network = Network.from_dict(db.collection('data').document('network').get().to_dict())
-
-#     # check to make sure members were successfully loaded
-#     if network is None:
-#         return Response(status = 503)
-
-#     return generate_fun_facts(member, network)
     
+# filter anonymous stats
+@app.route('/api/stats/filter', methods = ['GET'])
+def stats_filter():
+    # get unkeyed data collection ref
+    stats = db.collection('data').document('stats').collection('raw')
+
+    # filter collection
+    filtered_stats = stats
+    for key, value in request.args.to_dict().items():
+        filtered_stats = filtered_stats.where(key, '==', int(value) if value.isnumeric() else value)
+
+    for doc in filtered_stats.stream():
+        print(doc.id)
+
+    return Response(status = 200)
 
 if __name__ == '__main__':
 	app.run(host = '127.0.0.1', port = 8080, debug = True)
