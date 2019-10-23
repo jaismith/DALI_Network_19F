@@ -138,3 +138,13 @@ class Network():
       return self.membership_index[member_name]
 
     return []
+
+# stat object
+class Statistic:
+  def __init__(self, name, description, data):
+    self.name = name
+    self.description = description
+    self.data = data
+
+  def to_dict(self):
+    return {"name": self.name, "description": self.description, "data": self.data}

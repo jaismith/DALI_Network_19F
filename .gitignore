@@ -3,3 +3,4 @@ appengine-generated/
 flask/
 __pycache__/
 *.vscode/
+.DS_Store
