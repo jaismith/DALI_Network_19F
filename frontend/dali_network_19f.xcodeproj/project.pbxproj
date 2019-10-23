@@ -17,6 +17,7 @@
 		0C300FC722FDCDB5006281C8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FC622FDCDB5006281C8 /* API.swift */; };
 		0C300FC922FF136A006281C8 /* UIScrollView+positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FC822FF1369006281C8 /* UIScrollView+positions.swift */; };
 		0C300FCB22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FCA22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift */; };
+		0C3E15E7235EB66E009B158D /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E15E6235EB66E009B158D /* Statistic.swift */; };
 		0C5154912337E1FA0059FD4F /* FunFactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C51548F2337E1FA0059FD4F /* FunFactTableViewCell.swift */; };
 		0C5154922337E1FA0059FD4F /* FunFactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5154902337E1FA0059FD4F /* FunFactTableViewCell.xib */; };
 		0C515CA02301912D001F93C3 /* CustomSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C515C9F2301912D001F93C3 /* CustomSnapshotView.swift */; };
@@ -51,6 +52,7 @@
 		0C300FC622FDCDB5006281C8 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		0C300FC822FF1369006281C8 /* UIScrollView+positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+positions.swift"; sourceTree = "<group>"; };
 		0C300FCA22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+direction.swift"; sourceTree = "<group>"; };
+		0C3E15E6235EB66E009B158D /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		0C51548F2337E1FA0059FD4F /* FunFactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunFactTableViewCell.swift; sourceTree = "<group>"; };
 		0C5154902337E1FA0059FD4F /* FunFactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunFactTableViewCell.xib; sourceTree = "<group>"; };
 		0C515C9F2301912D001F93C3 /* CustomSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSnapshotView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				0C8CBA7D22FC7E9400F12DC7 /* RuntimeError.swift */,
 				0C300FC622FDCDB5006281C8 /* API.swift */,
 				0CAF55FB23049AC500CE976C /* Location.swift */,
+				0C3E15E6235EB66E009B158D /* Statistic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				0C6548E723019E8500F6A011 /* HeaderTableViewCell.swift in Sources */,
 				0C8CBA5622FC4F1300F12DC7 /* AppDelegate.swift in Sources */,
 				0C300FC722FDCDB5006281C8 /* API.swift in Sources */,
+				0C3E15E7235EB66E009B158D /* Statistic.swift in Sources */,
 				0C8CBA7C22FC784B00F12DC7 /* Member.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
