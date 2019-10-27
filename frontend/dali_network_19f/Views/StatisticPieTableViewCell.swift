@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class StatisticPieTableViewCell: UITableViewCell, StatisticCell {
+class StatisticPieTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
@@ -30,7 +30,6 @@ class StatisticPieTableViewCell: UITableViewCell, StatisticCell {
         // set up pie chart
         pieChartView.chartDescription?.text = nil
         pieChartView.chartDescription?.textColor = UIColor.white
-        pieChartView.holeColor = UIColor.init(red: 75 / 255, green: 160 / 255, blue: 221 / 255, alpha: 1)
         pieChartView.drawHoleEnabled = false
         pieChartView.drawEntryLabelsEnabled = false
         
@@ -48,6 +47,7 @@ class StatisticPieTableViewCell: UITableViewCell, StatisticCell {
         
         // config legend formatting
         pieChartView.legend.font = NSUIFont(name: "Montserrat-Medium", size: 14) ?? NSUIFont.systemFont(ofSize: 14)
+        pieChartView.legend.textColor = UIColor.white
         
         // animate chart
         pieChartView.animate(xAxisDuration: stat.seen ? 0 : 0.75)

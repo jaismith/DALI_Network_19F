@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class StatisticHistTableViewCell: UITableViewCell, StatisticCell {
+class StatisticHistTableViewCell: UITableViewCell {
 
     // MARK: Properties
     
@@ -30,6 +30,9 @@ class StatisticHistTableViewCell: UITableViewCell, StatisticCell {
         // set up pie chart
         barChartView.chartDescription?.text = nil
         barChartView.chartDescription?.textColor = UIColor.white
+        barChartView.xAxis.labelTextColor = UIColor.white
+        barChartView.leftAxis.labelTextColor = UIColor.white
+        barChartView.rightAxis.labelTextColor = UIColor.white
         
         // generate PieChartData
         var chartData = [BarChartDataEntry]()
@@ -40,11 +43,13 @@ class StatisticHistTableViewCell: UITableViewCell, StatisticCell {
         // add chartData to pie chart
         let barChartDataSet = BarChartDataSet(entries: chartData, label: nil)
         barChartDataSet.colors = [UIColor(named: "color0"), UIColor(named: "color1"), UIColor(named: "color2"), UIColor(named: "color3")] as! [NSUIColor]
+        barChartDataSet.valueTextColor = UIColor.white
         let barChartData = BarChartData(dataSet: barChartDataSet)
         barChartView.data = barChartData
         
         // config legend formatting
         barChartView.legend.enabled = false
+        barChartView.legend.textColor = UIColor.white
         
         // animate chart
         barChartView.animate(xAxisDuration: stat.seen ? 0 : 0.75)

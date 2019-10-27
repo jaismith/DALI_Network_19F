@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class MemberDetailTableViewController: UITableViewController {
 
@@ -36,10 +37,14 @@ class MemberDetailTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "InfoTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "InfoCell")
         tableView.register(UINib(nibName: "MapTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "MapCell")
         tableView.register(UINib(nibName: "FunFactTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "FactCell")
+        tableView.register(UINib(nibName: "StatsButtonTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "StatButtonCell")
 
         // set view title
         title = member.displayName
 
+        // listen for notification to show stats
+        NotificationCenter.default.addObserver(self, selector: #selector(showStats), name: Notification.Name.init("ShowStatSubset"), object: nil)
+        
         super.viewDidLoad()
     }
 
@@ -52,7 +57,7 @@ class MemberDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 4
+            return 4 + (member.other != nil ? 1 : 0)
 
         default:
             return 0
@@ -107,6 +112,14 @@ class MemberDetailTableViewController: UITableViewController {
                 
                 return cell
                 
+            case 4:
+                let identifier = "StatButtonCell"
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? StatsButtonTableViewCell else {
+                    fatalError()
+                }
+                
+                return cell
+                
             default:
                 fatalError()
             }
@@ -124,5 +137,27 @@ class MemberDetailTableViewController: UITableViewController {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
         header.backgroundColor = UIColor(red: 18 / 255, green: 36 / 255, blue: 67 / 255, alpha: 1)
         return header
+    }
+    
+    // MARK: Methods
+    
+    @objc func showStats() {
+        self.performSegue(withIdentifier: "ShowStatSubset", sender: member)
+    }
+    
+    // MARK: Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "ShowStatSubset":
+            guard let dest = segue.destination as? StatisticsSubsetTableViewController, let member = sender as? Member else {
+                return
+            }
+            
+            dest.member = member
+            
+        default:
+            os_log("Error, invalid segue", log: OSLog.default, type: .error)
+        }
     }
 }

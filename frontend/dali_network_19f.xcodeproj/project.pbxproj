@@ -18,7 +18,6 @@
 		0C300FC922FF136A006281C8 /* UIScrollView+positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FC822FF1369006281C8 /* UIScrollView+positions.swift */; };
 		0C300FCB22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300FCA22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift */; };
 		0C3E15E7235EB66E009B158D /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E15E6235EB66E009B158D /* Statistic.swift */; };
-		0C3E15EA23613AD1009B158D /* StatisticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E15E923613AD1009B158D /* StatisticsTableViewController.swift */; };
 		0C5154912337E1FA0059FD4F /* FunFactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C51548F2337E1FA0059FD4F /* FunFactTableViewCell.swift */; };
 		0C5154922337E1FA0059FD4F /* FunFactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5154902337E1FA0059FD4F /* FunFactTableViewCell.xib */; };
 		0C515CA02301912D001F93C3 /* CustomSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C515C9F2301912D001F93C3 /* CustomSnapshotView.swift */; };
@@ -29,6 +28,10 @@
 		0C87C69623654BFB00EE862F /* StatisticHistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87C69423654BFB00EE862F /* StatisticHistTableViewCell.swift */; };
 		0C87C69723654BFB00EE862F /* StatisticHistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C87C69523654BFB00EE862F /* StatisticHistTableViewCell.xib */; };
 		0C87C69923654F6B00EE862F /* StatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87C69823654F6B00EE862F /* StatisticCell.swift */; };
+		0C87D23923655C4C00852FC4 /* StatisticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87D23823655C4C00852FC4 /* StatisticsTableViewController.swift */; };
+		0C87D23B23655C6800852FC4 /* StatisticsSubsetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87D23A23655C6800852FC4 /* StatisticsSubsetTableViewController.swift */; };
+		0C87D23E23655F5A00852FC4 /* StatsButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87D23C23655F5A00852FC4 /* StatsButtonTableViewCell.swift */; };
+		0C87D23F23655F5A00852FC4 /* StatsButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C87D23D23655F5A00852FC4 /* StatsButtonTableViewCell.xib */; };
 		0C8CBA5622FC4F1300F12DC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5522FC4F1300F12DC7 /* AppDelegate.swift */; };
 		0C8CBA5822FC4F1300F12DC7 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5722FC4F1300F12DC7 /* LandingViewController.swift */; };
 		0C8CBA5B22FC4F1300F12DC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5922FC4F1300F12DC7 /* Main.storyboard */; };
@@ -59,7 +62,6 @@
 		0C300FC822FF1369006281C8 /* UIScrollView+positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+positions.swift"; sourceTree = "<group>"; };
 		0C300FCA22FF13C5006281C8 /* UIPanGestureRecognizer+direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+direction.swift"; sourceTree = "<group>"; };
 		0C3E15E6235EB66E009B158D /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
-		0C3E15E923613AD1009B158D /* StatisticsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewController.swift; sourceTree = "<group>"; };
 		0C51548F2337E1FA0059FD4F /* FunFactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunFactTableViewCell.swift; sourceTree = "<group>"; };
 		0C5154902337E1FA0059FD4F /* FunFactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunFactTableViewCell.xib; sourceTree = "<group>"; };
 		0C515C9F2301912D001F93C3 /* CustomSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSnapshotView.swift; sourceTree = "<group>"; };
@@ -72,6 +74,10 @@
 		0C87C69423654BFB00EE862F /* StatisticHistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticHistTableViewCell.swift; sourceTree = "<group>"; };
 		0C87C69523654BFB00EE862F /* StatisticHistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticHistTableViewCell.xib; sourceTree = "<group>"; };
 		0C87C69823654F6B00EE862F /* StatisticCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCell.swift; sourceTree = "<group>"; };
+		0C87D23823655C4C00852FC4 /* StatisticsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewController.swift; sourceTree = "<group>"; };
+		0C87D23A23655C6800852FC4 /* StatisticsSubsetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsSubsetTableViewController.swift; sourceTree = "<group>"; };
+		0C87D23C23655F5A00852FC4 /* StatsButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsButtonTableViewCell.swift; sourceTree = "<group>"; };
+		0C87D23D23655F5A00852FC4 /* StatsButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsButtonTableViewCell.xib; sourceTree = "<group>"; };
 		0C8CBA5222FC4F1300F12DC7 /* dali_network_19f.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dali_network_19f.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C8CBA5522FC4F1300F12DC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C8CBA5722FC4F1300F12DC7 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +125,8 @@
 		0C3E15E823613A82009B158D /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
-				0C3E15E923613AD1009B158D /* StatisticsTableViewController.swift */,
+				0C87D23823655C4C00852FC4 /* StatisticsTableViewController.swift */,
+				0C87D23A23655C6800852FC4 /* StatisticsSubsetTableViewController.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -206,6 +213,8 @@
 				0CA9AAB32363A6E900DC5C8F /* StatisticPieTableViewCell.xib */,
 				0C87C69423654BFB00EE862F /* StatisticHistTableViewCell.swift */,
 				0C87C69523654BFB00EE862F /* StatisticHistTableViewCell.xib */,
+				0C87D23C23655F5A00852FC4 /* StatsButtonTableViewCell.swift */,
+				0C87D23D23655F5A00852FC4 /* StatsButtonTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +333,7 @@
 				0C300FAF22FC9FAA006281C8 /* Montserrat-SemiBold.ttf in Resources */,
 				0C300FB022FC9FAA006281C8 /* Montserrat-Bold.ttf in Resources */,
 				0C8CBA7A22FC762600F12DC7 /* Montserrat-Medium.ttf in Resources */,
+				0C87D23F23655F5A00852FC4 /* StatsButtonTableViewCell.xib in Resources */,
 				0C8CBA6022FC4F1400F12DC7 /* LaunchScreen.storyboard in Resources */,
 				0CA9AAB52363A6E900DC5C8F /* StatisticPieTableViewCell.xib in Resources */,
 				0C0B2F0B230465F600ECD3DE /* InfoTableViewCell.xib in Resources */,
@@ -394,7 +404,6 @@
 				0C300FC922FF136A006281C8 /* UIScrollView+positions.swift in Sources */,
 				0CA9AAB42363A6E900DC5C8F /* StatisticPieTableViewCell.swift in Sources */,
 				0C8CBA7622FC754A00F12DC7 /* ProfileImageView.swift in Sources */,
-				0C3E15EA23613AD1009B158D /* StatisticsTableViewController.swift in Sources */,
 				0C8CBA8722FC8FE200F12DC7 /* MemberTableViewCell.swift in Sources */,
 				0C6548EA23019F4100F6A011 /* MemberDetailTableViewController.swift in Sources */,
 				0C8CBA5822FC4F1300F12DC7 /* LandingViewController.swift in Sources */,
@@ -405,6 +414,9 @@
 				0C300FB322FD2A03006281C8 /* UIDevice+hasNotch.swift in Sources */,
 				0C6548E723019E8500F6A011 /* HeaderTableViewCell.swift in Sources */,
 				0C8CBA5622FC4F1300F12DC7 /* AppDelegate.swift in Sources */,
+				0C87D23B23655C6800852FC4 /* StatisticsSubsetTableViewController.swift in Sources */,
+				0C87D23923655C4C00852FC4 /* StatisticsTableViewController.swift in Sources */,
+				0C87D23E23655F5A00852FC4 /* StatsButtonTableViewCell.swift in Sources */,
 				0C300FC722FDCDB5006281C8 /* API.swift in Sources */,
 				0C3E15E7235EB66E009B158D /* Statistic.swift in Sources */,
 				0C87C69923654F6B00EE862F /* StatisticCell.swift in Sources */,

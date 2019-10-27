@@ -10,15 +10,13 @@ import UIKit
 
 class StatsButtonTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    // MARK: Properties
     
+    @IBOutlet weak var statsButton: UIButton!
+    
+    // MARK: Actions
+    
+    @IBAction func statsButton(_ sender: Any) {
+        NotificationCenter.default.post(Notification.init(name: Notification.Name(rawValue: "ShowStatSubset")))
+    }
 }

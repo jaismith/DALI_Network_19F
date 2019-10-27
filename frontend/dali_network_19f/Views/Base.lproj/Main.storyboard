@@ -271,6 +271,9 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="KKM-sl-5zJ" kind="show" identifier="ShowStatSubset" id="Y8b-hn-Nxl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVs-qI-BpN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -364,6 +367,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRM-is-sFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2774" y="1021"/>
+        </scene>
+        <!--Relevant Stats-->
+        <scene sceneID="rht-LF-hxP">
+            <objects>
+                <tableViewController title="Relevant Stats" id="KKM-sl-5zJ" customClass="StatisticsSubsetTableViewController" customModule="dali_network_19f" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="VVE-ac-ead">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.070588235289999995" green="0.14117647059999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="NO"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="dataSource" destination="KKM-sl-5zJ" id="OH3-C1-I3f"/>
+                            <outlet property="delegate" destination="KKM-sl-5zJ" id="fMn-rM-za3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Relevant Stats" id="LfF-EO-ecT"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yZ7-jO-3gh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5172" y="331"/>
         </scene>
     </scenes>
     <resources>
