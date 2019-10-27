@@ -14,15 +14,15 @@ struct Statistic: Codable {
     
     var name: String
     var description: String
-    var keys: [String]
-    var values: [Double]
+    var data: [String: Double]
+    
+    var seen: Bool = false
     
     // MARK: Codable
     
     enum CodingKeys: String, CodingKey {
         case name
         case description
-        case keys
-        case values
-    }
+        case data
+    } 
 }

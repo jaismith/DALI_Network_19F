@@ -11,7 +11,7 @@ import Alamofire
 import os.log
 
 // api root
-let apiRoot = "http://dali-network-19f.appspot.com"
+let apiRoot = "http://127.0.0.1:8080"//"http://dali-network-19f.appspot.com"
 
 class API {
 
@@ -114,4 +114,30 @@ class API {
                 }
         }
     }
+    
+    func getStats(filter: [String: String], completion: @escaping ([Statistic]?) -> Void) {
+        session.request(apiRoot + "/api/stats/filter", method: .get, parameters: filter, encoding: URLEncoding.default)
+            .validate(statusCode: [200])
+            .validate(contentType: ["application/json"])
+            .responseJSON { response in
+                var statistics: [Statistic]?
+                defer {
+                    completion(statistics)
+                }
+                
+                switch response.result {
+                case .success:
+                    guard let data = response.data, let deserializedStatistic = try? JSONDecoder().decode([Statistic].self, from: data) else {
+                        os_log("Error deserializing statistics for filter [%@])", log: OSLog.default, type: .error, filter)
+                        return
+                    }
+                    
+                    statistics = deserializedStatistic
+                    
+                case .failure(let error):
+                    os_log("Error fetching statistics matching filter [%@]: %@", log: OSLog.default, type: .error, filter, error.localizedDescription)
+                }
+        }
+    }
 }
+
