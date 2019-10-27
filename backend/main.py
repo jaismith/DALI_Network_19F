@@ -17,7 +17,7 @@ from grip import render_page
 from models import Member, Network
 from helpers.network import generate_network, process_fun_facts
 from helpers.fun_facts import generate_fun_facts
-from helpers.stats import filter, generate_stats
+from helpers.stats import filter, generate_stats, getStatName
 
 # environment vars
 GOOGLE_CLOUD_PROJECT = os.environ.get('GOOGLE_CLOUD_PROJECT')
@@ -174,7 +174,7 @@ def stats_filter():
 
     # filter collection
     docs = filter(db, request.args.to_dict())
-    stats = generate_stats(docs)
+    stats = generate_stats(docs, request.args.to_dict())
     
     return jsonify(list(map(lambda stat: stat.to_dict(), stats))), 200
 

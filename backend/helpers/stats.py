@@ -18,7 +18,7 @@ def filter(db, filters):
     # return query results
     return filtered_docs.stream()
 
-def generate_stats(filtered_docs):
+def generate_stats(filtered_docs, filters):
     # create set of common keys and a local dict to hold parsed doc data
     keys = None
     docs = dict()
@@ -56,7 +56,8 @@ def generate_stats(filtered_docs):
     # convert data into Statistic objects
     stats = []
     for key, value in freq_dict.items():
-        stats.append(Statistic(getStatName(key), "coming soon...", value))
+        if key not in filters.keys():
+            stats.append(Statistic(getStatName(key), "coming soon...", value))
 
     # return stats
     return stats
