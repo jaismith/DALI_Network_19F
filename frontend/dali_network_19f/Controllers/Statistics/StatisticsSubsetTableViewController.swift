@@ -61,4 +61,12 @@ class StatisticsSubsetTableViewController: UITableViewController {
             return cell
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard stats != nil else {
+            return
+        }
+        
+        stats![indexPath.row].seen = true
+    }
 }

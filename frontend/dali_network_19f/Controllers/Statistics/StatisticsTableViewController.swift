@@ -178,8 +178,4 @@ class StatisticsTableViewController: UITableViewController, UIGestureRecognizerD
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-    
-    // MARK: - Navigation
-    
-    // TODO
 }
