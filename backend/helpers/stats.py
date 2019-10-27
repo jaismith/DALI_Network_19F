@@ -56,7 +56,27 @@ def generate_stats(filtered_docs):
     # convert data into Statistic objects
     stats = []
     for key, value in freq_dict.items():
-        stats.append(Statistic(key, "coming soon...", value))
+        stats.append(Statistic(getStatName(key), "coming soon...", value))
 
     # return stats
     return stats
+
+def getStatName(key):
+    names = {
+        "year": "Year",
+        "gender": "Gender",
+        "heightInches": "Height (inches)",
+        "happiness": "Happiness Rating",
+        "stressed": "Stress Rating",
+        "sleepPerNight": "Sleep (hours/night)",
+        "socialDinnerPerWeek": "Social Dinners (#/week)",
+        "alcoholDrinksPerWeek": "Alcohol Consumption (drinks/week)",
+        "caffeineRating": "Caffeine Use",
+        "affiliated": "Affiliated",
+        "numOfLanguages": "Languages Spoken",
+        "gymPerWeek": "Gym Use (visits/week)",
+        "hoursOnScreen": "Screen Time",
+        "phoneType": "Phone Type"
+    }
+
+    return names[key]
