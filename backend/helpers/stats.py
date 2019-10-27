@@ -67,16 +67,16 @@ def getStatName(key):
         "year": "Year",
         "gender": "Gender",
         "heightInches": "Height (inches)",
-        "happiness": "Happiness Rating",
-        "stressed": "Stress Rating",
+        "happiness": "Happiness Rating (1-5)",
+        "stressed": "Stress Rating (1-10)",
         "sleepPerNight": "Sleep (hours/night)",
         "socialDinnerPerWeek": "Social Dinners (#/week)",
         "alcoholDrinksPerWeek": "Alcohol Consumption (drinks/week)",
-        "caffeineRating": "Caffeine Use",
+        "caffeineRating": "Caffeine Use (1-10)",
         "affiliated": "Affiliated",
         "numOfLanguages": "Languages Spoken",
         "gymPerWeek": "Gym Use (visits/week)",
-        "hoursOnScreen": "Screen Time",
+        "hoursOnScreen": "Screen Time (hours)",
         "phoneType": "Phone Type"
     }
 
