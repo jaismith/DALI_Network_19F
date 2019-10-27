@@ -51,7 +51,7 @@ def generate_stats(filtered_docs):
     for key in field_values.keys():
         freq_dict[key] = dict()
         for value in set(field_values[key]):
-            freq_dict[key][value] = field_values[key].count(value) / len(field_values[key])
+            freq_dict[key][value] = field_values[key].count(value) # / len(field_values[key])
 
     # convert data into Statistic objects
     stats = []
