@@ -86,7 +86,7 @@ Uses [Flask](https://palletsprojects.com/p/flask/), [App Engine](https://cloud.g
 			     "Male": 18,
 			     "Other": 1
 			  },
-			  "description": "coming soon...",
+			  "description": "What gender members identify as.",
 			  "name": "Gender"
 			},
 			...
