@@ -15,6 +15,7 @@ class StatisticPieTableViewCell: UITableViewCell {
     
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var chartLabel: UILabel!
+    @IBOutlet weak var chartDescription: UITextView!
     
     var statistic: Statistic!
     
@@ -26,16 +27,18 @@ class StatisticPieTableViewCell: UITableViewCell {
         
         // set label
         chartLabel.text = stat.name
-        
+        chartDescription.text = stat.description
+        print(stat.description)
         // set up pie chart
         pieChartView.chartDescription?.text = nil
         pieChartView.chartDescription?.textColor = UIColor.white
         pieChartView.drawHoleEnabled = false
         pieChartView.drawEntryLabelsEnabled = false
+        pieChartView.setExtraOffsets(left: 0, top: 0, right: 0, bottom: -15)
         
         // generate PieChartData
         var chartData = [PieChartDataEntry]()
-        for (key, value) in statistic.data {
+        for (key, value) in statistic.data.sorted(by: { a, b in return a.key == b.key ? a.value < b.value : a.key < b.key }) {
             chartData.append(PieChartDataEntry(value: value, label: key))
         }
         

@@ -46,7 +46,7 @@ class StatisticsTableViewController: UITableViewController, UIGestureRecognizerD
         
         // fetch members
         API.shared.getStats(filter: [:]) { statistics in
-            self.statistics = statistics
+            self.statistics = statistics?.sorted(by: { a, b in return a.name > b.name })
             
             DispatchQueue.main.async {
                 if !self.viewDidAppear {

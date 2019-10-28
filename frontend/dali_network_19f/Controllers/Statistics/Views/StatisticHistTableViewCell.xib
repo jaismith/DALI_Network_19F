@@ -8,6 +8,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-MediumItalic.ttf">
+            <string>Montserrat-MediumItalic</string>
+        </array>
         <array key="Montserrat-SemiBold.ttf">
             <string>Montserrat-SemiBold</string>
         </array>
@@ -15,44 +21,63 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatisticHistCell" rowHeight="337" id="KGk-i7-Jjw" customClass="StatisticHistTableViewCell" customModule="dali_network_19f" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="337"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatisticHistCell" rowHeight="377" id="KGk-i7-Jjw" customClass="StatisticHistTableViewCell" customModule="dali_network_19f" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="377"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="337"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="377"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chart Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dmy-OE-WvH">
-                        <rect key="frame" x="20" y="15" width="119.5" height="52"/>
+                        <rect key="frame" x="20" y="15" width="119.5" height="57.5"/>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PUu-4x-Kgr" customClass="BarChartView" customModule="Charts">
-                        <rect key="frame" x="20" y="87" width="280" height="250"/>
+                        <rect key="frame" x="20" y="92.5" width="280" height="250"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="250" id="7Vi-oB-3lo"/>
                         </constraints>
                     </view>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" text="Chart Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWf-QZ-4fj">
+                        <rect key="frame" x="20" y="342.5" width="280" height="34.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Histogram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQi-eb-bwH">
+                        <rect key="frame" x="234.5" y="15" width="65.5" height="15"/>
+                        <fontDescription key="fontDescription" name="Montserrat-MediumItalic" family="Montserrat" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Dmy-OE-WvH" secondAttribute="trailing" id="2wn-M1-a0x"/>
+                    <constraint firstItem="zWf-QZ-4fj" firstAttribute="top" secondItem="PUu-4x-Kgr" secondAttribute="bottom" id="HOp-xy-lBv"/>
                     <constraint firstItem="Dmy-OE-WvH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="If6-ng-plZ"/>
                     <constraint firstItem="Dmy-OE-WvH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="J60-dA-FUL"/>
                     <constraint firstItem="PUu-4x-Kgr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hAN-xn-a8Z"/>
                     <constraint firstAttribute="trailing" secondItem="PUu-4x-Kgr" secondAttribute="trailing" constant="20" id="ivw-1a-5Wd"/>
+                    <constraint firstAttribute="bottom" secondItem="zWf-QZ-4fj" secondAttribute="bottom" id="k10-ne-afX"/>
+                    <constraint firstAttribute="trailing" secondItem="zWf-QZ-4fj" secondAttribute="trailing" constant="20" id="lsQ-pb-6fh"/>
+                    <constraint firstItem="KQi-eb-bwH" firstAttribute="top" secondItem="Dmy-OE-WvH" secondAttribute="top" id="nk7-EP-PFk"/>
                     <constraint firstItem="PUu-4x-Kgr" firstAttribute="top" secondItem="Dmy-OE-WvH" secondAttribute="bottom" constant="20" id="qLI-a8-V4Z"/>
-                    <constraint firstAttribute="bottom" secondItem="PUu-4x-Kgr" secondAttribute="bottom" id="tfK-O3-L7M"/>
+                    <constraint firstAttribute="trailing" secondItem="KQi-eb-bwH" secondAttribute="trailing" constant="20" id="u1l-Gr-RJr"/>
+                    <constraint firstItem="zWf-QZ-4fj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="yFG-hR-40K"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="barChartView" destination="PUu-4x-Kgr" id="tVo-yu-xsF"/>
+                <outlet property="chartDescription" destination="zWf-QZ-4fj" id="fsM-Aa-LIU"/>
                 <outlet property="chartLabel" destination="Dmy-OE-WvH" id="XGF-BW-OOk"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="217.29910714285714"/>
+            <point key="canvasLocation" x="131.8840579710145" y="230.69196428571428"/>
         </tableViewCell>
     </objects>
 </document>

@@ -15,6 +15,7 @@ class StatisticHistTableViewCell: UITableViewCell {
     
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var chartLabel: UILabel!
+    @IBOutlet weak var chartDescription: UITextView!
     
     var statistic: Statistic!
     
@@ -26,6 +27,7 @@ class StatisticHistTableViewCell: UITableViewCell {
         
         // set label
         chartLabel.text = stat.name
+        chartDescription.text = stat.description
         
         // set up pie chart
         barChartView.chartDescription?.text = nil
@@ -36,7 +38,7 @@ class StatisticHistTableViewCell: UITableViewCell {
         
         // generate PieChartData
         var chartData = [BarChartDataEntry]()
-        for (key, value) in statistic.data {
+        for (key, value) in statistic.data.sorted(by: { a, b in return a.key == b.key ? a.value < b.value : a.key < b.key }) {
             chartData.append(BarChartDataEntry(x: Double(Int(key) ?? 0), y: value))
         }
         

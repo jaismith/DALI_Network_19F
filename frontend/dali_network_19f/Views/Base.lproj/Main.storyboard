@@ -373,7 +373,7 @@
         <scene sceneID="rht-LF-hxP">
             <objects>
                 <tableViewController title="Relevant Stats" id="KKM-sl-5zJ" customClass="StatisticsSubsetTableViewController" customModule="dali_network_19f" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="VVE-ac-ead">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="VVE-ac-ead">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.070588235289999995" green="0.14117647059999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

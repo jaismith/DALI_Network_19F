@@ -25,7 +25,7 @@ class StatisticsSubsetTableViewController: UITableViewController {
         
         // load stats from API
         API.shared.getStats(filter: ["year": member.year, "gender": member.other!["gender"]!, "phoneType": member.other!["phoneType"]!]) { statistics in
-            self.stats = statistics
+            self.stats = statistics?.sorted(by: { a, b in return a.name > b.name })
             self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .fade)
         }
     }

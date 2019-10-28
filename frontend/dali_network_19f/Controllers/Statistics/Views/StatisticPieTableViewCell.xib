@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
         <array key="Montserrat-SemiBold.ttf">
             <string>Montserrat-SemiBold</string>
         </array>
@@ -15,45 +18,56 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatisticPieCell" rowHeight="321" id="KGk-i7-Jjw" customClass="StatisticPieTableViewCell" customModule="dali_network_19f" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="321"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatisticPieCell" rowHeight="359" id="KGk-i7-Jjw" customClass="StatisticPieTableViewCell" customModule="dali_network_19f" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="359"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="321"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="359"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYb-aW-U0f" customClass="PieChartView" customModule="Charts">
-                        <rect key="frame" x="20" y="71" width="280" height="250"/>
+                        <rect key="frame" x="20" y="74.5" width="280" height="250"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="250" id="2rL-Aw-w8c"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chart Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EP-40-tht">
-                        <rect key="frame" x="20" y="15" width="120" height="56"/>
+                        <rect key="frame" x="20" y="15" width="120" height="49.5"/>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" text="Chart Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gp-p1-YgO">
+                        <rect key="frame" x="20" y="324.5" width="280" height="34.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="eYb-aW-U0f" secondAttribute="trailing" constant="20" id="BwX-5O-sgK"/>
                     <constraint firstItem="eYb-aW-U0f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="FH1-gs-zuc"/>
-                    <constraint firstItem="eYb-aW-U0f" firstAttribute="top" secondItem="6EP-40-tht" secondAttribute="bottom" id="Nb4-f2-l0o"/>
-                    <constraint firstAttribute="bottom" secondItem="eYb-aW-U0f" secondAttribute="bottom" id="Nde-6Y-mqB"/>
+                    <constraint firstItem="eYb-aW-U0f" firstAttribute="top" secondItem="6EP-40-tht" secondAttribute="bottom" constant="10" id="Nb4-f2-l0o"/>
+                    <constraint firstAttribute="trailing" secondItem="6Gp-p1-YgO" secondAttribute="trailing" constant="20" id="PeS-Cy-HSW"/>
                     <constraint firstItem="6EP-40-tht" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="bm1-F9-aVw"/>
+                    <constraint firstItem="6Gp-p1-YgO" firstAttribute="top" secondItem="eYb-aW-U0f" secondAttribute="bottom" id="frt-PX-He1"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6EP-40-tht" secondAttribute="trailing" id="gQS-9K-yaO"/>
+                    <constraint firstAttribute="bottom" secondItem="6Gp-p1-YgO" secondAttribute="bottom" id="hzb-Lv-zK9"/>
                     <constraint firstItem="6EP-40-tht" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="jR4-4p-Xf9"/>
+                    <constraint firstItem="6Gp-p1-YgO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="m2h-Ov-Ll7"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="chartDescription" destination="6Gp-p1-YgO" id="3nI-UL-aE2"/>
                 <outlet property="chartLabel" destination="6EP-40-tht" id="B1A-3S-5oR"/>
                 <outlet property="pieChartView" destination="eYb-aW-U0f" id="rGi-us-G1s"/>
             </connections>
-            <point key="canvasLocation" x="276.81159420289856" y="232.70089285714283"/>
+            <point key="canvasLocation" x="276.81159420289856" y="245.42410714285714"/>
         </tableViewCell>
     </objects>
 </document>
