@@ -2,6 +2,8 @@
 
 Uses [Flask](https://palletsprojects.com/p/flask/), [App Engine](https://cloud.google.com/appengine/), [Firestore](https://cloud.google.com/firestore/), [Places API](https://developers.google.com/places/web-service/intro)
 
+Hosted on Google App Engine [here](http://dali-network-19f.appspot.com/api).
+
 ## Endpoints
 
 - `GET` `/api`
