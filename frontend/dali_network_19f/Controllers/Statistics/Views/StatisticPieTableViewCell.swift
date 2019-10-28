@@ -42,6 +42,7 @@ class StatisticPieTableViewCell: UITableViewCell {
         // add chartData to pie chart
         let pieChartDataSet = PieChartDataSet(entries: chartData, label: nil)
         pieChartDataSet.colors = [UIColor(named: "color0"), UIColor(named: "color1"), UIColor(named: "color2"), UIColor(named: "color3")] as! [NSUIColor]
+        pieChartDataSet.valueFormatter = IntFormatter()
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         pieChartView.data = pieChartData
         

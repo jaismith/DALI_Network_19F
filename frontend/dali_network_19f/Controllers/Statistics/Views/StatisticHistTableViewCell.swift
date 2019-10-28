@@ -44,6 +44,7 @@ class StatisticHistTableViewCell: UITableViewCell {
         let barChartDataSet = BarChartDataSet(entries: chartData, label: nil)
         barChartDataSet.colors = [UIColor(named: "color0"), UIColor(named: "color1"), UIColor(named: "color2"), UIColor(named: "color3")] as! [NSUIColor]
         barChartDataSet.valueTextColor = UIColor.white
+        barChartDataSet.valueFormatter = IntFormatter()
         let barChartData = BarChartData(dataSet: barChartDataSet)
         barChartView.data = barChartData
         

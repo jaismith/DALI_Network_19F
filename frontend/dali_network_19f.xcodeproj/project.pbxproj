@@ -32,6 +32,7 @@
 		0C87D23B23655C6800852FC4 /* StatisticsSubsetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87D23A23655C6800852FC4 /* StatisticsSubsetTableViewController.swift */; };
 		0C87D23E23655F5A00852FC4 /* StatsButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87D23C23655F5A00852FC4 /* StatsButtonTableViewCell.swift */; };
 		0C87D23F23655F5A00852FC4 /* StatsButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C87D23D23655F5A00852FC4 /* StatsButtonTableViewCell.xib */; };
+		0C87D24323667BB400852FC4 /* IntFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87D24223667BB400852FC4 /* IntFormatter.swift */; };
 		0C8CBA5622FC4F1300F12DC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5522FC4F1300F12DC7 /* AppDelegate.swift */; };
 		0C8CBA5822FC4F1300F12DC7 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5722FC4F1300F12DC7 /* LandingViewController.swift */; };
 		0C8CBA5B22FC4F1300F12DC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CBA5922FC4F1300F12DC7 /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 		0C87D23A23655C6800852FC4 /* StatisticsSubsetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsSubsetTableViewController.swift; sourceTree = "<group>"; };
 		0C87D23C23655F5A00852FC4 /* StatsButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsButtonTableViewCell.swift; sourceTree = "<group>"; };
 		0C87D23D23655F5A00852FC4 /* StatsButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsButtonTableViewCell.xib; sourceTree = "<group>"; };
+		0C87D24223667BB400852FC4 /* IntFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntFormatter.swift; sourceTree = "<group>"; };
 		0C8CBA5222FC4F1300F12DC7 /* dali_network_19f.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dali_network_19f.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C8CBA5522FC4F1300F12DC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C8CBA5722FC4F1300F12DC7 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		0C3E15E823613A82009B158D /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				0C87D24423667DE600852FC4 /* Views */,
 				0C87D23823655C4C00852FC4 /* StatisticsTableViewController.swift */,
 				0C87D23A23655C6800852FC4 /* StatisticsSubsetTableViewController.swift */,
 			);
@@ -152,6 +155,19 @@
 				0C10E659230485B200662BF1 /* MapTableViewCell.xib */,
 				0C51548F2337E1FA0059FD4F /* FunFactTableViewCell.swift */,
 				0C5154902337E1FA0059FD4F /* FunFactTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0C87D24423667DE600852FC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0CA9AAB22363A6E900DC5C8F /* StatisticPieTableViewCell.swift */,
+				0CA9AAB32363A6E900DC5C8F /* StatisticPieTableViewCell.xib */,
+				0C87C69423654BFB00EE862F /* StatisticHistTableViewCell.swift */,
+				0C87C69523654BFB00EE862F /* StatisticHistTableViewCell.xib */,
+				0C87D23C23655F5A00852FC4 /* StatsButtonTableViewCell.swift */,
+				0C87D23D23655F5A00852FC4 /* StatsButtonTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +211,7 @@
 				0CAF55FB23049AC500CE976C /* Location.swift */,
 				0C3E15E6235EB66E009B158D /* Statistic.swift */,
 				0C87C69823654F6B00EE862F /* StatisticCell.swift */,
+				0C87D24223667BB400852FC4 /* IntFormatter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,12 +226,6 @@
 				0C8CBA8622FC8FE200F12DC7 /* MemberTableViewCell.xib */,
 				0C515C9F2301912D001F93C3 /* CustomSnapshotView.swift */,
 				0CB74EFB23045E1C0062839A /* CircularView.swift */,
-				0CA9AAB22363A6E900DC5C8F /* StatisticPieTableViewCell.swift */,
-				0CA9AAB32363A6E900DC5C8F /* StatisticPieTableViewCell.xib */,
-				0C87C69423654BFB00EE862F /* StatisticHistTableViewCell.swift */,
-				0C87C69523654BFB00EE862F /* StatisticHistTableViewCell.xib */,
-				0C87D23C23655F5A00852FC4 /* StatsButtonTableViewCell.swift */,
-				0C87D23D23655F5A00852FC4 /* StatsButtonTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -419,6 +430,7 @@
 				0C87D23E23655F5A00852FC4 /* StatsButtonTableViewCell.swift in Sources */,
 				0C300FC722FDCDB5006281C8 /* API.swift in Sources */,
 				0C3E15E7235EB66E009B158D /* Statistic.swift in Sources */,
+				0C87D24323667BB400852FC4 /* IntFormatter.swift in Sources */,
 				0C87C69923654F6B00EE862F /* StatisticCell.swift in Sources */,
 				0C8CBA7C22FC784B00F12DC7 /* Member.swift in Sources */,
 			);

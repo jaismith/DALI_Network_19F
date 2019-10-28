@@ -17,9 +17,13 @@ class FunFactTableViewCell: UITableViewCell {
     var member: Member? {
         didSet {
             guard let member = member, let info = member.other, let funFacts = info["fun_facts"], !funFacts.isEmpty else {
+                funFactsLabel.isHidden = true
                 self.isHidden = true
                 return
             }
+            
+            funFactsLabel.isHidden = false
+            self.isHidden = false
             
             funFactsLabel.text = funFacts
         }
