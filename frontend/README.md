@@ -29,6 +29,6 @@ Written in [Swift](https://developer.apple.com/swift/) using [UIKit](https://dev
 
 | Stats | 
 | --- |
-| ![Stats](demo_images/stats.png)
+| ![Stats](https://github.com/jaismith/DALI_Network_19F/blob/jai/frontend/demo_images/stats.png?s=200)
 
 Unfiltered statistics about everyone in the DALI lab, conveyed through pie charts and histograms.
