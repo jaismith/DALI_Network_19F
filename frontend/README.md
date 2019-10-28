@@ -10,7 +10,7 @@ Written in [Swift](https://developer.apple.com/swift/) using [UIKit](https://dev
 
 | Splash | Home |
 | --- | --- |
-| ![Splash](demo_images/splash.png) | ![Home](demo_images/home.png) |
+| <img src="demo_images/splash.png" alt="Splash Screenshot" height="500"/> | <img src="demo_images/home.png" alt="Home Screenshot" height="500"/> |
 
 [Members]() and [Statistics]() tiles for navigating.
 
@@ -18,7 +18,7 @@ Written in [Swift](https://developer.apple.com/swift/) using [UIKit](https://dev
 
 | Members | Member Detail | Relevant Stats |
 | --- | --- | --- |
-| ![Members](demo_images/members.png) | ![Member Detail](demo_images/memberDetail.png) | ![Relevant Stats](demo_images/relevantStats.png) |
+| <img src="demo_images/members.png" alt="Members Screenshot" height="500"/> | <img src="demo_images/memberDetail.png" alt="Member Detail Screenshot" height="500"/> | <img src="demo_images/relevantStats.png" alt="Relevant Stats Screenshot" height="500"/> |
 
 **Members:** shows all members in the DALI lab, with key data points (name, role, year).  
 **Member Detail:** shows more detailed information about each member including favorite quotes, majors, a map of their hometown, some auto-generated fun facts, and a link to relevant statistics.  
@@ -29,6 +29,6 @@ Written in [Swift](https://developer.apple.com/swift/) using [UIKit](https://dev
 
 | Stats | 
 | --- |
-| <img src="demo_images/stats.png" alt="Stats Screenshot" height="200"/> |
+| <img src="demo_images/stats.png" alt="Stats Screenshot" height="500"/> |
 
 Unfiltered statistics about everyone in the DALI lab, conveyed through pie charts and histograms.
