@@ -61,7 +61,7 @@ Uses [Flask](https://palletsprojects.com/p/flask/), [App Engine](https://cloud.g
 - `GET` `/api/members/filter?field=<field>&value=<value>`
 	- Returns all members matching the provided filters.
 	- `/api/members/filter?field="year"&value="'22"`
-		- `200`
+		- `200`  
 		- ```
 		{ 
 			"location": { 
