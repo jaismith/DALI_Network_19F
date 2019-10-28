@@ -57,7 +57,7 @@ def generate_stats(filtered_docs, filters):
     stats = []
     for key, value in freq_dict.items():
         if key not in filters.keys():
-            stats.append(Statistic(getStatName(key), "coming soon...", value))
+            stats.append(Statistic(getStatName(key), getStatDescription(key), value))
 
     # return stats
     return stats
@@ -66,18 +66,38 @@ def getStatName(key):
     names = {
         "year": "Year",
         "gender": "Gender",
-        "heightInches": "Height (inches)",
-        "happiness": "Happiness Rating (1-5)",
-        "stressed": "Stress Rating (1-10)",
-        "sleepPerNight": "Sleep (hours/night)",
-        "socialDinnerPerWeek": "Social Dinners (#/week)",
-        "alcoholDrinksPerWeek": "Alcohol Consumption (drinks/week)",
-        "caffeineRating": "Caffeine Use (1-10)",
+        "heightInches": "Height",
+        "happiness": "Happiness Rating",
+        "stressed": "Stress Rating",
+        "sleepPerNight": "Sleep",
+        "socialDinnerPerWeek": "Social Dinners",
+        "alcoholDrinksPerWeek": "Alcohol Consumption",
+        "caffeineRating": "Caffeine Use",
         "affiliated": "Affiliated",
         "numOfLanguages": "Languages Spoken",
-        "gymPerWeek": "Gym Use (visits/week)",
-        "hoursOnScreen": "Screen Time (hours)",
+        "gymPerWeek": "Gym Use",
+        "hoursOnScreen": "Screen Time",
         "phoneType": "Phone Type"
     }
 
     return names[key]
+
+def getStatDescription(key):
+    descriptions = {
+        "year": "Class year of members (i.e. '20 is the class of 2020).",
+        "gender": "What gender members identify as.",
+        "heightInches": "How tall members are, in inches.",
+        "happiness": "How members rated their happiness, on a scale of one to five.",
+        "stressed": "How members rated their stress, on scale of one to ten",
+        "sleepPerNight": "How many hours of sleep members get a night.",
+        "socialDinnerPerWeek": "How many social dinners members attend a week.",
+        "alcoholDrinksPerWeek": "How many alcoholic drinks members consume a week.",
+        "caffeineRating": "How members rated their caffeine use, on a scale one one to ten.",
+        "affiliated": "Whether members are affiliated (0 is unaffiliated, 1 is affiliated).",
+        "numOfLanguages": "Number of languages spoken by members.",
+        "gymPerWeek": "How many times members visit the gym a week.",
+        "hoursOnScreen": "How many hours members spend on screens a week.",
+        "phoneType": "The type of phones members use."
+    }
+
+    return descriptions[key]
